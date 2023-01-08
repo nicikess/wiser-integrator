@@ -1,0 +1,104 @@
+package ch.unisg.ics.interactions.wiser.tests.units;
+
+import ch.unisg.ics.interactions.wiser.data.Classification;
+import ch.unisg.ics.interactions.wiser.data.Fruit;
+import ch.unisg.ics.interactions.wiser.data.EcoSpold;
+import ch.unisg.ics.interactions.wiser.data.SkillSets;
+import ch.unisg.ics.interactions.wiser.filter.XMLReaderWithoutNamespace;
+import org.apache.logging.log4j.core.util.IOUtils;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.*;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+public class DatasetImporterTests {
+
+    static String ecoSpoldTestFileName = "ecospold-test.xml";
+    static String fruitTestFileName = "fruit-test.xml";
+
+    private void print(String output) {
+        System.out.println(output);
+    }
+
+    @Test
+    void correctParsingOfFruitExample() {
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        URL resource = classLoader.getResource(fruitTestFileName);
+
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(SkillSets.class);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+
+            File file = new File(resource.getFile());
+            SkillSets skillsets = (SkillSets) jaxbUnmarshaller.unmarshal(file);
+
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    void ignoreNamespaceTest() {
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        URL resource = classLoader.getResource(ecoSpoldTestFileName);
+
+        try {
+
+            InputStream is = new FileInputStream(resource.getFile());
+            XMLStreamReader xsr = XMLInputFactory.newFactory().createXMLStreamReader(is);
+            XMLReaderWithoutNamespace xr = new XMLReaderWithoutNamespace(xsr);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (XMLStreamException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    void correctParsingOfClassification() {
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        URL resource = classLoader.getResource(ecoSpoldTestFileName);
+
+        try {
+
+            InputStream is = new FileInputStream(resource.getFile());
+            XMLStreamReader xsr = XMLInputFactory.newFactory().createXMLStreamReader(is);
+            XMLReaderWithoutNamespace xr = new XMLReaderWithoutNamespace(xsr);
+
+            JAXBContext jaxbContext = JAXBContext.newInstance(Classification.class);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+
+            Classification classification = (Classification) jaxbUnmarshaller.unmarshal(xr);
+
+            print(classification.getclassificationSystem());
+
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (XMLStreamException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
