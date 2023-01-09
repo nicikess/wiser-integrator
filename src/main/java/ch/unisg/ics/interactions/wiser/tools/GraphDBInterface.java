@@ -1,29 +1,22 @@
-package ch.unisg.ics.interactions.wiser.tests.units;
+package ch.unisg.ics.interactions.wiser.tools;
 
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.Credentials;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.CredentialsProvider;
+import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.BasicCredentialsProvider;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.jena.query.*;
 import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
-import java.io.IOException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.HttpClients;
+
 import java.util.Iterator;
 
-/**
- * Created by Isai B. Cicourel
- */
-public class SelectGraphDB {
+public class GraphDBInterface {
 
-    /**
-     * Query an Endpoint using the given SPARQl query
-     * @param szQuery
-     * @param szEndpoint
-     * @throws Exception
-     */
-    public void queryEndpoint(String szQuery, String szEndpoint) throws Exception {
+    private String szEndpoint = "http://wiser-flagship.interactions.ics.unisg.ch/repositories/test";
+
+    public void queryEndpoint(String szQuery) throws Exception {
 
         // Create a Query with the given String
         Query query = QueryFactory.create(szQuery);
@@ -59,10 +52,9 @@ public class SelectGraphDB {
                 System.out.println("[" + szVar + "]: " + szVal);
             }
         }
-    } // End of Method: queryEndpoint()
+    }
 
-    /** Make an {@linkHttpClient} with users/password authentication. */
-    static HttpClient authHttpClient(String user, String password) {
+    public HttpClient authHttpClient(String user, String password) {
         CredentialsProvider credsProvider = new BasicCredentialsProvider();
         Credentials credentials = new UsernamePasswordCredentials(user, password);
         credsProvider.setCredentials(AuthScope.ANY, credentials);
@@ -72,23 +64,14 @@ public class SelectGraphDB {
         return httpClient;
     }
 
+    public String getQuery() {
 
-    public static void main(String[] args) throws IOException {
-        // SPARQL Query
         String szQuery = "select * where { \n" +
                 "\t?s ?p ?o .\n" +
                 "} limit 5";
 
-        // DBPedia Endpoint
-        String szEndpoint = "http://wiser-flagship.interactions.ics.unisg.ch/repositories/test";
+        return szQuery;
 
-        // Query DBPedia
-        try {
-            SelectGraphDB q = new SelectGraphDB();
-            q.queryEndpoint(szQuery, szEndpoint);
-        }
-        catch (Exception ex) {
-            System.err.println(ex);
-        }
     }
+
 }

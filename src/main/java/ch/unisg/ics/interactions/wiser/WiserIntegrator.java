@@ -1,8 +1,12 @@
-package ch.unisg.ics.interactions.wiser.tests.units;
+package ch.unisg.ics.interactions.wiser;
 
-import ch.unisg.ics.interactions.wiser.data.ecoSpold.*;
+import ch.unisg.ics.interactions.wiser.data.ecoSpold.EcoSpold;
 import ch.unisg.ics.interactions.wiser.data.ilcd.ProcessDataSet;
 import ch.unisg.ics.interactions.wiser.filter.XMLReaderWithoutNamespace;
+import ch.unisg.ics.interactions.wiser.tools.GraphDBInterface;
+import org.apache.jena.base.Sys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -15,20 +19,40 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.URL;
 
-public class UnmarshalILCD {
+public class WiserIntegrator {
 
-    static String ILCDTestFileName = "ilcd-test.xml";
+    Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 
-    public static void main(String args[]) {
+    public static void main(String [] args) {
 
-        UnmarshalILCD unmarshalILCD = new UnmarshalILCD();
-        unmarshalILCD.unmarshalILCD();
+        String ILCDTestFileName = "ilcd-test.xml";
+        String EcoSpoldTestFileName = "ecospold-test.xml";
+
+        WiserIntegrator integrator = new WiserIntegrator();
+
+        ProcessDataSet processDataSet = integrator.unmarshalILCD(ILCDTestFileName);
+        EcoSpold ecoSpold = integrator.unmarshalEcoSpold(EcoSpoldTestFileName);
+
+        System.out.println(processDataSet.getProcessInformation().getGeography().getLocationOfOperationSupplyOrProduction().getLocation());
+        System.out.println(ecoSpold.getActivityDataset().getAdministrativeInformation().getDataEntryBy().getPersonId());
+
+        GraphDBInterface graphDBInterface = new GraphDBInterface();
+
+        String query = graphDBInterface.getQuery();
+
+        try {
+            graphDBInterface.queryEndpoint(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
-    void unmarshalILCD() {
+
+    private ProcessDataSet unmarshalILCD(String fileName) {
 
         ClassLoader classLoader = getClass().getClassLoader();
-        URL resource = classLoader.getResource(ILCDTestFileName);
+        URL resource = classLoader.getResource(fileName);
+        ProcessDataSet processDataSet = new ProcessDataSet();
 
         try {
 
@@ -49,10 +73,9 @@ public class UnmarshalILCD {
             JAXBContext jaxbContext = JAXBContext.newInstance(ProcessDataSet.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
-            ProcessDataSet processDataSet = (ProcessDataSet) jaxbUnmarshaller.unmarshal(xr);
+            processDataSet = (ProcessDataSet) jaxbUnmarshaller.unmarshal(xr);
 
             System.out.println(processDataSet.getProcessInformation().getGeography().getLocationOfOperationSupplyOrProduction().getDescriptionOfRestrictions());
-
 
         } catch (JAXBException e) {
             e.printStackTrace();
@@ -62,12 +85,15 @@ public class UnmarshalILCD {
             e.printStackTrace();
         }
 
+        return processDataSet;
+
     }
 
-    void unmarshalEcoSpoldActivity() {
+    private EcoSpold unmarshalEcoSpold(String fileName) {
 
         ClassLoader classLoader = getClass().getClassLoader();
-        URL resource = classLoader.getResource(ILCDTestFileName);
+        URL resource = classLoader.getResource(fileName);
+        EcoSpold ecoSpold = new EcoSpold();
 
         try {
 
@@ -78,19 +104,17 @@ public class UnmarshalILCD {
 
             //xr.nextTag();
             while(xr.hasNext()) {
-                if(xr.isStartElement() && xr.getLocalName().equals("activity")) {
+                if(xr.isStartElement() && xr.getLocalName().equals("ecoSpold")) {
                     break;
                 }
                 xr.next();
             }
 
             //unmarshal
-            JAXBContext jaxbContext = JAXBContext.newInstance(Activity.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(EcoSpold.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
-            Activity activity = (Activity) jaxbUnmarshaller.unmarshal(xr);
-
-            System.out.println(activity.getComment().get(0).getText().get(2));
+            ecoSpold = (EcoSpold) jaxbUnmarshaller.unmarshal(xr);
 
 
         } catch (JAXBException e) {
@@ -101,8 +125,8 @@ public class UnmarshalILCD {
             e.printStackTrace();
         }
 
+        return ecoSpold;
+
     }
-
-
 
 }

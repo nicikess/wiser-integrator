@@ -1,7 +1,6 @@
 package ch.unisg.ics.interactions.wiser.tests.units;
 
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.Classification;
-import ch.unisg.ics.interactions.wiser.data.SkillSets;
 import ch.unisg.ics.interactions.wiser.filter.XMLReaderWithoutNamespace;
 import org.junit.jupiter.api.Test;
 
@@ -24,24 +23,6 @@ public class DatasetImporterTests {
         System.out.println(output);
     }
 
-    @Test
-    void correctParsingOfFruitExample() {
-
-        ClassLoader classLoader = getClass().getClassLoader();
-        URL resource = classLoader.getResource(fruitTestFileName);
-
-        try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(SkillSets.class);
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-
-            File file = new File(resource.getFile());
-            SkillSets skillsets = (SkillSets) jaxbUnmarshaller.unmarshal(file);
-
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     @Test
     void ignoreNamespaceTest() {
