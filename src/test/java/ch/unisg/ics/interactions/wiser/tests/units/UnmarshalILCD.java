@@ -1,6 +1,7 @@
 package ch.unisg.ics.interactions.wiser.tests.units;
 
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.*;
+import ch.unisg.ics.interactions.wiser.data.ilcd.ProcessDataSet;
 import ch.unisg.ics.interactions.wiser.filter.XMLReaderWithoutNamespace;
 
 import javax.xml.bind.JAXBContext;
@@ -16,7 +17,7 @@ import java.net.URL;
 
 public class UnmarshalILCD {
 
-    static String ILCDTestFileName = "ecospold-test.xml";
+    static String ILCDTestFileName = "ilcd-test.xml";
 
     public static void main(String args[]) {
 
@@ -45,12 +46,12 @@ public class UnmarshalILCD {
             }
 
             //unmarshal
-            JAXBContext jaxbContext = JAXBContext.newInstance(EcoSpold.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(ProcessDataSet.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
-            EcoSpold ecoSpold = (EcoSpold) jaxbUnmarshaller.unmarshal(xr);
+            ProcessDataSet processDataSet = (ProcessDataSet) jaxbUnmarshaller.unmarshal(xr);
 
-            System.out.println(ecoSpold.getActivityDataset().getAdministrativeInformation().getDataEntryBy().getPersonId());
+            System.out.println(processDataSet.getExchanges().getExchange().get(0).getReferenceToFlowDataSet().getShortDescription());
 
 
         } catch (JAXBException e) {

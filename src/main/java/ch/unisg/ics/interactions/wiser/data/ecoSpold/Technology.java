@@ -9,7 +9,7 @@ import java.util.List;
 
 @XmlRootElement
 // order of the fields in XML
-// @XmlType(propOrder = {"price", "name"})
+
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Technology {
 
