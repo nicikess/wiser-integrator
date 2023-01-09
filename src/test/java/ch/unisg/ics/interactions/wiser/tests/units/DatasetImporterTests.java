@@ -1,20 +1,12 @@
 package ch.unisg.ics.interactions.wiser.tests.units;
 
-import ch.unisg.ics.interactions.wiser.data.Classification;
-import ch.unisg.ics.interactions.wiser.data.Fruit;
-import ch.unisg.ics.interactions.wiser.data.EcoSpold;
+import ch.unisg.ics.interactions.wiser.data.ecoSpold.Classification;
 import ch.unisg.ics.interactions.wiser.data.SkillSets;
 import ch.unisg.ics.interactions.wiser.filter.XMLReaderWithoutNamespace;
-import org.apache.logging.log4j.core.util.IOUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.text.ParseException;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -26,7 +18,7 @@ import javax.xml.stream.XMLStreamReader;
 public class DatasetImporterTests {
 
     static String ecoSpoldTestFileName = "ecospold-test.xml";
-    static String fruitTestFileName = "fruit-test.xml";
+    static String fruitTestFileName = "skill-test.xml";
 
     private void print(String output) {
         System.out.println(output);
