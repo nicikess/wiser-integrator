@@ -3,6 +3,7 @@ package ch.unisg.ics.interactions.wiser;
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.EcoSpold;
 import ch.unisg.ics.interactions.wiser.data.ilcd.ProcessDataSet;
 import ch.unisg.ics.interactions.wiser.filter.XMLReaderWithoutNamespace;
+import ch.unisg.ics.interactions.wiser.integrator.InsertData;
 import ch.unisg.ics.interactions.wiser.tools.GraphDBInterface;
 import org.apache.jena.base.Sys;
 import org.slf4j.Logger;
@@ -30,20 +31,28 @@ public class WiserIntegrator {
 
         WiserIntegrator integrator = new WiserIntegrator();
 
-        ProcessDataSet processDataSet = integrator.unmarshalILCD(ILCDTestFileName);
         EcoSpold ecoSpold = integrator.unmarshalEcoSpold(EcoSpoldTestFileName);
+        ProcessDataSet ilcd = integrator.unmarshalILCD(ILCDTestFileName);
 
-        System.out.println(processDataSet.getProcessInformation().getGeography().getLocationOfOperationSupplyOrProduction().getLocation());
-        System.out.println(ecoSpold.getActivityDataset().getAdministrativeInformation().getDataEntryBy().getPersonId());
+        new InsertData(ecoSpold, ilcd);
 
-        GraphDBInterface graphDBInterface = new GraphDBInterface();
 
-        String query = graphDBInterface.getQuery();
+
+        //Link EcoSpold
+        //Link ILCD
+
+        //System.out.println(ecoSpold.getActivityDataset().getAdministrativeInformation().getDataEntryBy().getPersonId());
+        //System.out.println(ilcd.getProcessInformation().getGeography().getLocationOfOperationSupplyOrProduction().getLocation());
+
+        //GraphDBInterface graphDBInterface = new GraphDBInterface();
+
+
+        //String query = graphDBInterface.getQuery();
 
         try {
-            graphDBInterface.queryEndpoint(query);
+            //graphDBInterface.queryEndpoint(query);
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
     }

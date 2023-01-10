@@ -38,5 +38,47 @@ public class Activity {
         return generalComment;
     }
 
+    public int getSpecialActivityType() {
+        return specialActivityType;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getActivityNameId() {
+        return activityNameId;
+    }
+
+    public int getInheritanceDepth() {
+        return inheritanceDepth;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public int getEnergyValues() {
+        return energyValues;
+    }
+
+    public String getActivityName() {
+        return activityName;
+    }
+
+    public String getIncludedActivitiesStart() {
+        return includedActivitiesStart;
+    }
+
+    public String getIncludedActivitiesEnd() {
+        return includedActivitiesEnd;
+    }
+
+    public List<GeneralComment> getGeneralComment() {
+        return generalComment;
+    }
+
+
+
 }
 

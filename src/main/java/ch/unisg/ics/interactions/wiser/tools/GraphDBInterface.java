@@ -7,51 +7,44 @@ import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.jena.query.*;
-import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
+
+import org.eclipse.rdf4j.query.QueryLanguage;
+import org.eclipse.rdf4j.query.Update;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.sparql.SPARQLConnection;
+import org.eclipse.rdf4j.repository.sparql.SPARQLRepository;
 
 import java.util.Iterator;
 
 public class GraphDBInterface {
 
-    private String szEndpoint = "http://wiser-flagship.interactions.ics.unisg.ch/repositories/test";
+    private String szEndpoint = "https://wiser-flagship.interactions.ics.unisg.ch/repositories/test/statements";
 
     public void queryEndpoint(String szQuery) throws Exception {
 
-        // Create a Query with the given String
-        Query query = QueryFactory.create(szQuery);
 
-        HttpClient hc = authHttpClient("nKesseli", "6V!s4NaV7");
+        SPARQLRepository sparqlRepository = new SPARQLRepository(szEndpoint, szEndpoint);
 
-        // Create the Execution Factory using the given Endpoint
-        QueryExecution qexec = QueryExecutionFactory.sparqlService(szEndpoint, query, hc);
+        sparqlRepository.setUsernameAndPassword("nKesseli", "6V!s4NaV7");
 
-        // Set Timeout
-        ((QueryEngineHTTP)qexec).addParam("timeout", "10000");
+        sparqlRepository.initialize();
 
+        RepositoryConnection repositoryConnection = sparqlRepository.getConnection();
 
-        // Execute Query
-        int iCount = 0;
-        ResultSet rs = qexec.execSelect();
-        while (rs.hasNext()) {
-            // Get Result
-            QuerySolution qs = rs.next();
+        repositoryConnection.begin();
 
-            // Get Variable Names
-            Iterator<String> itVars = qs.varNames();
+        Update updateOperation = repositoryConnection.prepareUpdate(QueryLanguage.SPARQL, szQuery);
 
-            // Count
-            iCount++;
-            System.out.println("Result " + iCount + ": ");
+        updateOperation.execute();
 
-            // Display Result
-            while (itVars.hasNext()) {
-                String szVar = itVars.next().toString();
-                String szVal = qs.get(szVar).toString();
-
-                System.out.println("[" + szVar + "]: " + szVal);
-            }
+        try {
+            repositoryConnection.commit();
+            repositoryConnection.close();
+        } catch (Exception e) {
+            repositoryConnection.rollback();
         }
+
     }
 
     public HttpClient authHttpClient(String user, String password) {
