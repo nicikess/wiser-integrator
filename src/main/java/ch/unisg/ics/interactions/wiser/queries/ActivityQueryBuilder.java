@@ -20,7 +20,7 @@ public class ActivityQueryBuilder {
                         "insert {" + "\n" +
                         "?activity a " + VocabularyEcoSpold.activity + ";\n" +
                         VocabularyEcoSpold.specialActivityType + " " + activity.getSpecialActivityType() + ";\n" +
-                        VocabularyEcoSpold.id + " \"" + "test" + "\";\n" +
+                        VocabularyEcoSpold.id + " \"" + activity.getId() + "\";\n" +
                         VocabularyEcoSpold.activityNameId + " \"" + activity.getActivityNameId() + "\";\n" +
                         VocabularyEcoSpold.inheritanceDepth + " " + activity.getInheritanceDepth() + ";\n" +
                         VocabularyEcoSpold.type + " " + activity.getType() + ";\n" +
