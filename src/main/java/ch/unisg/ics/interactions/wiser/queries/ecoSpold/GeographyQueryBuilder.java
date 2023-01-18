@@ -1,4 +1,4 @@
-package ch.unisg.ics.interactions.wiser.queries;
+package ch.unisg.ics.interactions.wiser.queries.ecoSpold;
 
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.Geography;
 import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
@@ -16,9 +16,9 @@ public class GeographyQueryBuilder {
     public String createGeographyInsertionQuery() {
 
         String query =
-                "PREFIX " + VocabularyEcoSpold.ecoSpoldDataTypesPrefix + "\n" +
+                "PREFIX " + VocabularyEcoSpold.ecoSpoldTypesPrefix + "\n" +
                 "PREFIX " + VocabularyEcoSpold.bridgingOntologyPrefix + "\n" +
-                "PREFIX " + VocabularyEcoSpold.ecoSpoldDataSourcePrefix + "\n" +
+                "PREFIX " + VocabularyEcoSpold.ecoSpoldSourcePrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?geography a " + VocabularyEcoSpold.geography + ";\n" +

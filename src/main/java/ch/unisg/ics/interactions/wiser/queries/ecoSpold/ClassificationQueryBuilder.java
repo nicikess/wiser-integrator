@@ -1,4 +1,4 @@
-package ch.unisg.ics.interactions.wiser.queries;
+package ch.unisg.ics.interactions.wiser.queries.ecoSpold;
 
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.Classification;
 import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
@@ -16,7 +16,7 @@ public class ClassificationQueryBuilder {
     public String createClassificationInsertionQuery() {
 
         String query =
-                "PREFIX " + VocabularyEcoSpold.ecoSpoldDataTypesPrefix + "\n" +
+                "PREFIX " + VocabularyEcoSpold.ecoSpoldTypesPrefix + "\n" +
                 "PREFIX " + VocabularyEcoSpold.bridgingOntologyPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +

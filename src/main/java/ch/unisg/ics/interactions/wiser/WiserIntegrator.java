@@ -3,9 +3,9 @@ package ch.unisg.ics.interactions.wiser;
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.EcoSpold;
 import ch.unisg.ics.interactions.wiser.data.ilcd.ProcessDataSet;
 import ch.unisg.ics.interactions.wiser.filter.XMLReaderWithoutNamespace;
-import ch.unisg.ics.interactions.wiser.integrator.InsertData;
+import ch.unisg.ics.interactions.wiser.queries.ecoSpold.ActivityQueryBuilder;
+import ch.unisg.ics.interactions.wiser.queries.ilcd.*;
 import ch.unisg.ics.interactions.wiser.tools.GraphDBInterface;
-import org.apache.jena.base.Sys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,25 +34,27 @@ public class WiserIntegrator {
         EcoSpold ecoSpold = integrator.unmarshalEcoSpold(EcoSpoldTestFileName);
         ProcessDataSet ilcd = integrator.unmarshalILCD(ILCDTestFileName);
 
-        new InsertData(ecoSpold, ilcd);
+        ActivityQueryBuilder qb = new ActivityQueryBuilder(ecoSpold.getActivityDataset().getActivityDescription().getActivity());
 
 
+        String query = qb.createActivityInsertionQuery();
+
+        System.out.println(query);
+
+        //new InsertData(ecoSpold, ilcd);
 
         //Link EcoSpold
         //Link ILCD
 
-        //System.out.println(ecoSpold.getActivityDataset().getAdministrativeInformation().getDataEntryBy().getPersonId());
-        //System.out.println(ilcd.getProcessInformation().getGeography().getLocationOfOperationSupplyOrProduction().getLocation());
-
-        //GraphDBInterface graphDBInterface = new GraphDBInterface();
+        GraphDBInterface graphDBInterface = new GraphDBInterface();
 
 
         //String query = graphDBInterface.getQuery();
 
         try {
-            //graphDBInterface.queryEndpoint(query);
+            graphDBInterface.queryEndpoint(query);
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
 
     }
@@ -83,8 +85,6 @@ public class WiserIntegrator {
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
             processDataSet = (ProcessDataSet) jaxbUnmarshaller.unmarshal(xr);
-
-            System.out.println(processDataSet.getProcessInformation().getGeography().getLocationOfOperationSupplyOrProduction().getDescriptionOfRestrictions());
 
         } catch (JAXBException e) {
             e.printStackTrace();

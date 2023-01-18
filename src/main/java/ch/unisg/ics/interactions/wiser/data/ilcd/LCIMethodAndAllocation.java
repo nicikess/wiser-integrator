@@ -12,6 +12,9 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class LCIMethodAndAllocation {
 
+    @XmlAttribute
+    String lang;
+
     @XmlElement
     String typeOfDataSet;
 
@@ -25,6 +28,11 @@ public class LCIMethodAndAllocation {
 
     ReferenceToLCAMethodDetails referenceToLCAMethodDetails;
 
+    String modellingConstants;
+
+    public String getLang() {
+        return lang;
+    }
 
     public String getTypeOfDataSet() {
         return typeOfDataSet;
@@ -49,4 +57,9 @@ public class LCIMethodAndAllocation {
     public ReferenceToLCAMethodDetails getReferenceToLCAMethodDetails() {
         return referenceToLCAMethodDetails;
     }
+
+    public String getModellingConstants() {
+        return modellingConstants.replaceAll("\n", " ");
+    }
+
 }

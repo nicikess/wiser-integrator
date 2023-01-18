@@ -21,7 +21,7 @@ public class Technology {
     ReferenceToTechnologyFlowDiagrammOrPicture referenceToTechnologyFlowDiagrammOrPicture;
 
     public String getTechnologyDescriptionAndIncludedProcesses() {
-        return technologyDescriptionAndIncludedProcesses;
+        return technologyDescriptionAndIncludedProcesses.replaceAll("\n", " ").replaceAll("\""," ");
     }
 
     public String getTechnologicalApplicability() {

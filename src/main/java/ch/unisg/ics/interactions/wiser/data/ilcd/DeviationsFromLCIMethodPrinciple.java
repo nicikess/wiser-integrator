@@ -11,14 +11,13 @@ import java.util.List;
 // order of the fields in XML
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Classification {
+public class DeviationsFromLCIMethodPrinciple {
 
-    @XmlElement(name = "class")
-    List<String> classInfo = new ArrayList<String>();
+    @XmlElement
+    String deviationsFromLCIMethodPrinciple;
 
-    public List<String> getClassInfo() {
-        return classInfo;
+    public String getDeviationsFromLCIMethodPrinciple() {
+        return deviationsFromLCIMethodPrinciple;
     }
-
 
 }

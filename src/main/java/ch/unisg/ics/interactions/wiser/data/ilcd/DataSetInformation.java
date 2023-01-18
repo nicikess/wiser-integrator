@@ -42,7 +42,7 @@ public class DataSetInformation {
     }
 
     public String getGeneralComment() {
-        return generalComment;
+        return generalComment.replaceAll("\n", " ");
     }
 
     public List<ReferenceToExternalDocumentation> getReferenceToExternalDocumentation() {

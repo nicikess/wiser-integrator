@@ -1,33 +1,23 @@
 package ch.unisg.ics.interactions.wiser.integrator;
 
-import ch.unisg.ics.interactions.wiser.data.ecoSpold.Activity;
-import ch.unisg.ics.interactions.wiser.data.ecoSpold.Classification;
-import ch.unisg.ics.interactions.wiser.data.ecoSpold.EcoSpold;
-import ch.unisg.ics.interactions.wiser.data.ecoSpold.Geography;
+import ch.unisg.ics.interactions.wiser.data.ecoSpold.*;
 import ch.unisg.ics.interactions.wiser.data.ilcd.ProcessDataSet;
-import ch.unisg.ics.interactions.wiser.data.ecoSpold.Technology;
-import ch.unisg.ics.interactions.wiser.queries.ActivityQueryBuilder;
-import ch.unisg.ics.interactions.wiser.queries.ClassificationQueryBuilder;
-import ch.unisg.ics.interactions.wiser.queries.GeographyQueryBuilder;
-import ch.unisg.ics.interactions.wiser.queries.TechnologyQueryBuilder;
+import ch.unisg.ics.interactions.wiser.queries.ecoSpold.*;
 import ch.unisg.ics.interactions.wiser.tools.GraphDBInterface;
 
 import java.util.List;
 
-public class InsertData {
+public class InsertEcoSpoldData {
 
     private static EcoSpold ecoSpold;
-    private static ProcessDataSet ilcd;
     private static String activityIdEcoSpold;
 
-    public InsertData(EcoSpold ecoSpold, ProcessDataSet ilcd) {
+    public InsertEcoSpoldData(EcoSpold ecoSpold) {
 
         this.ecoSpold = ecoSpold;
-        this.ilcd = ilcd;
         this.activityIdEcoSpold = ecoSpold.getActivityDataset().getActivityDescription().getActivity().getId();
 
         insertEcoSpoldDataToGraphDB();
-        //insertILCDDataToGraphDB();
 
     }
 
@@ -52,14 +42,11 @@ public class InsertData {
         insertDataGeneratorAndPublication();
         insertFileAttributes();
 
-
-
     }
 
-    public void insertDataToGraphDB(String query) {
+    public void insertDataEcoSpoldToGraphDB(String query) {
 
         GraphDBInterface graphDBInterface = new GraphDBInterface();
-        System.out.println(query);
         try {
             graphDBInterface.queryEndpoint(query);
         } catch (Exception e) {
@@ -72,7 +59,7 @@ public class InsertData {
 
         Activity activityData = ecoSpold.getActivityDataset().getActivityDescription().getActivity();
         String insertQueryActivity = new ActivityQueryBuilder(activityData).createActivityInsertionQuery();
-        insertDataToGraphDB(insertQueryActivity);
+        insertDataEcoSpoldToGraphDB(insertQueryActivity);
 
     }
 
@@ -81,7 +68,7 @@ public class InsertData {
         List<Classification> classificationData = ecoSpold.getActivityDataset().getActivityDescription().getClassification();
         for (Classification classification: classificationData) {
             String insertQueryClassification = new ClassificationQueryBuilder(classification, activityIdEcoSpold).createClassificationInsertionQuery();
-            insertDataToGraphDB(insertQueryClassification);
+            insertDataEcoSpoldToGraphDB(insertQueryClassification);
         }
 
     }
@@ -90,7 +77,7 @@ public class InsertData {
 
         Geography geographyData = ecoSpold.getActivityDataset().getActivityDescription().getGeography();
         String insertQueryGeography = new GeographyQueryBuilder(geographyData,activityIdEcoSpold).createGeographyInsertionQuery();
-        insertDataToGraphDB(insertQueryGeography);
+        insertDataEcoSpoldToGraphDB(insertQueryGeography);
 
     }
 
@@ -98,14 +85,24 @@ public class InsertData {
 
         Technology technology = ecoSpold.getActivityDataset().getActivityDescription().getTechnology();
         String insertQueryTechnology = new TechnologyQueryBuilder(technology,activityIdEcoSpold).createTechnologyInsertionQuery();
-        insertDataToGraphDB(insertQueryTechnology);
+        insertDataEcoSpoldToGraphDB(insertQueryTechnology);
 
     }
 
     private void insertTimePeriod() {
+
+        TimePeriod timePeriod = ecoSpold.getActivityDataset().getActivityDescription().getTimePeriod();
+        String insertQueryTimePeriod = new TimePeriodQueryBuilder(timePeriod,activityIdEcoSpold).createTimePeriodInsertionQuery();
+        insertDataEcoSpoldToGraphDB(insertQueryTimePeriod);
+
     }
 
     private void insertMacroEconomicScenario() {
+
+        MacroEconomicScenario macroEconomicScenario = ecoSpold.getActivityDataset().getActivityDescription().getMacroEconomicScenario();
+        String insertMacroEconomicScenario = new MacroEconomicScenarioQueryBuilder(macroEconomicScenario,activityIdEcoSpold).createMacroEconomicScenarioInsertionQuery();
+        insertDataEcoSpoldToGraphDB(insertMacroEconomicScenario);
+
     }
 
     private void insertIntermediateExchange() {

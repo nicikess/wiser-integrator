@@ -1,4 +1,4 @@
-package ch.unisg.ics.interactions.wiser.queries;
+package ch.unisg.ics.interactions.wiser.queries.ecoSpold;
 
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.Activity;
 import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
@@ -14,22 +14,22 @@ public class ActivityQueryBuilder {
     public String createActivityInsertionQuery() {
 
         String query =
-                "PREFIX " + VocabularyEcoSpold.ecoSpoldDataMetaInformationPrefix + "\n" +
-                "PREFIX " + VocabularyEcoSpold.ecoSpoldDataBasePrefix + "\n" +
+                "PREFIX " + VocabularyEcoSpold.ecoSpoldMetaInformationPrefix + "\n" +
+                "PREFIX " + VocabularyEcoSpold.ecoSpoldBasePrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?activity a " + VocabularyEcoSpold.activity + ";\n" +
                         VocabularyEcoSpold.specialActivityType + " " + activity.getSpecialActivityType() + ";\n" +
-                        VocabularyEcoSpold.id + " \"" + activity.getId() + "\";\n" +
+                        VocabularyEcoSpold.id + " \"" + "testID" + "\";\n" +
                         VocabularyEcoSpold.activityNameId + " \"" + activity.getActivityNameId() + "\";\n" +
                         VocabularyEcoSpold.inheritanceDepth + " " + activity.getInheritanceDepth() + ";\n" +
                         VocabularyEcoSpold.type + " " + activity.getType() + ";\n" +
                         VocabularyEcoSpold.energyValues + " " + activity.getEnergyValues() + ";\n" +
                         VocabularyEcoSpold.activityName + " \"" + activity.getActivityName() + "\";\n" +
-                        activitySynonyms() +
+                        addSynonymsToQueryString() +
                         VocabularyEcoSpold.includedActivitiesStart + " \"" + activity.getIncludedActivitiesStart() + "\";\n" +
                         VocabularyEcoSpold.includedActivitiesEnd + " \"" + activity.getIncludedActivitiesEnd() + "\";\n" +
-                        VocabularyEcoSpold.generalComment + " " + activityComment() + ".\n" +
+                        VocabularyEcoSpold.generalComment + " " + addCommentsToQueryString() + ".\n" +
                         "} where {" + "\n" +
                         "BIND(IRI(" + VocabularyEcoSpold.activityIRI + activity.getId() + "') AS ?activity)" + "\n" +
                         "}";
@@ -38,7 +38,7 @@ public class ActivityQueryBuilder {
 
     }
 
-    public String activitySynonyms() {
+    public String addSynonymsToQueryString() {
 
         String synonyms = "";
 
@@ -50,7 +50,7 @@ public class ActivityQueryBuilder {
 
     }
 
-    public String activityComment() {
+    public String addCommentsToQueryString() {
 
         String comment = "\"";
 

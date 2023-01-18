@@ -1,4 +1,4 @@
-package ch.unisg.ics.interactions.wiser.queries;
+package ch.unisg.ics.interactions.wiser.queries.ecoSpold;
 
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.Technology;
 import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
@@ -16,9 +16,9 @@ public class TechnologyQueryBuilder {
     public String createTechnologyInsertionQuery() {
 
         String query =
-                "PREFIX " + VocabularyEcoSpold.ecoSpoldDataActivityPrefix + "\n" +
-                "PREFIX " + VocabularyEcoSpold.ecoSpoldDataBasePrefix + "\n" +
-                "PREFIX " + VocabularyEcoSpold.ecoSpoldDataMetaInformationPrefix + "\n" +
+                "PREFIX " + VocabularyEcoSpold.ecoSpoldActivityPrefix + "\n" +
+                "PREFIX " + VocabularyEcoSpold.ecoSpoldBasePrefix + "\n" +
+                "PREFIX " + VocabularyEcoSpold.ecoSpoldMetaInformationPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?technology a " + VocabularyEcoSpold.technology + ";\n" +
