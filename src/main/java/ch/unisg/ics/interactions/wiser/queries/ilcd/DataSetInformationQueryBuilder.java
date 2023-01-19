@@ -18,7 +18,7 @@ public class DataSetInformationQueryBuilder {
         String query =
                 "PREFIX " + VocabularyILCD.ilcdProcessPrefix + "\n" +
                 "PREFIX " + VocabularyILCD.ilcdCommonGroupsPrefix + "\n" +
-                "PREFIX " + VocabularyILCD.ilcdDatatypes + "\n" +
+                "PREFIX " + VocabularyILCD.ilcdDatatypesPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?dataSetInformation a " + VocabularyILCD.dataSetInformation + ";\n" +

@@ -6,8 +6,8 @@ public class VocabularyILCD {
     public static String bridgingOntologyPrefix = "<http://wiser-flagship.org/>";
     public static String ilcdCommonGroupsPrefix = "commonGroups: <http://lca.jrc.it/ILCD/Common_Groups#>";
     public static String ilcdProcessPrefix = "process: <http://lca.jrc.it/ILCD/Process_Data_Set#>";
-    public static String ilcdCommonEnumeration = "commonEnumeration: <http://lca.jrc.it/ILCD/Common_Enumeration_Values#>";
-    public static String ilcdDatatypes = "dataTypes: <http://lca.jrc.it/ILCD/Common_Data_Types#>";
+    public static String ilcdCommonEnumerationPrefix = "commonEnumeration: <http://lca.jrc.it/ILCD/Common_Enumeration_Values#>";
+    public static String ilcdDatatypesPrefix = "dataTypes: <http://lca.jrc.it/ILCD/Common_Data_Types#>";
 
     //Geography
     public static String geography = "process:LocationOfOperationSupplyOrProductionType";
@@ -24,6 +24,8 @@ public class VocabularyILCD {
     public static String datasetInformationIRI = "'http://lca.jrc.it/ILCD/dataSetInformation/";
     public static String datasetCommissionerAndGoalIRI = "'http://lca.jrc.it/ILCD/commissionerAndGoal/";
     public static String dataSourcesTreatmentAndRepresentativenessIRI = "'http://lca.jrc.it/ILCD/dataSourcesTreatmentAndRepresentativeness/";
+    public static String referenceIRI = "'http://lca.jrc.it/ILCD/dataSource/";
+    public static String reviewIRI = "'http://lca.jrc.it/ILCD/review/";
 
     //Time
     public static String time = "process:TimeRepresentativenessType";
@@ -67,5 +69,22 @@ public class VocabularyILCD {
     public static String deviationsFromCutOffAndCompletenessPrinciples = "process:deviationsFromCutOffAndCompletenessPrinciples";
     public static String dataSelectionAndCombinationPrinciples = "process:dataSelectionAndCombinationPrinciples";
     public static String deviationsFromSelectionAndCombinationPrinciples = "process:deviationsFromSelectionAndCombinationPrinciples";
+    public static String dataTreatmentAndExtrapolationsPrinciples = "process:dataTreatmentAndExtrapolationsPrinciples";
+
+    //Reference
+    public static String reference = "commonGroups:GlobalReferenceType";
+    public static String referenceType = "commonGroups:type";
+    public static String referenceVersion = "dataTypes:version";
+    public static String referenceURI = "commonGroups:uri";
+    public static String referenceShortDescription = "commonGroups:shortDescription";
+
+    //Validation
+    public static String review = "process:ReviewType";
+    public static String reviewType = "commonGroups:Type";
+    public static String reviewDetails = "commonGroups:reviewDetails";
+
+
+
+
 
 }

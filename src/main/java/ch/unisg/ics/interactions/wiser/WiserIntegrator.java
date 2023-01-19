@@ -2,6 +2,7 @@ package ch.unisg.ics.interactions.wiser;
 
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.EcoSpold;
 import ch.unisg.ics.interactions.wiser.data.ilcd.ProcessDataSet;
+import ch.unisg.ics.interactions.wiser.data.ilcd.ReferenceToDataSource;
 import ch.unisg.ics.interactions.wiser.filter.XMLReaderWithoutNamespace;
 import ch.unisg.ics.interactions.wiser.queries.ecoSpold.ActivityQueryBuilder;
 import ch.unisg.ics.interactions.wiser.queries.ilcd.*;
@@ -34,27 +35,24 @@ public class WiserIntegrator {
         EcoSpold ecoSpold = integrator.unmarshalEcoSpold(EcoSpoldTestFileName);
         ProcessDataSet ilcd = integrator.unmarshalILCD(ILCDTestFileName);
 
-        ActivityQueryBuilder qb = new ActivityQueryBuilder(ecoSpold.getActivityDataset().getActivityDescription().getActivity());
+        ReferenceToDataSource referenceToDataSource = ilcd.getModellingAndValidation().getDataSourcesTreatmentAndRepresentativeness().getReferenceToDataSources().get(0);
 
-
-        String query = qb.createActivityInsertionQuery();
-
-        System.out.println(query);
+        System.out.println(referenceToDataSource.getUri());
 
         //new InsertData(ecoSpold, ilcd);
 
         //Link EcoSpold
         //Link ILCD
 
-        GraphDBInterface graphDBInterface = new GraphDBInterface();
+        //GraphDBInterface graphDBInterface = new GraphDBInterface();
 
 
         //String query = graphDBInterface.getQuery();
 
         try {
-            graphDBInterface.queryEndpoint(query);
+            //graphDBInterface.queryEndpoint(query);
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
     }

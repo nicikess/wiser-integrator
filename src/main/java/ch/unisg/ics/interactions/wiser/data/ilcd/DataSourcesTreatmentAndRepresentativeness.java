@@ -22,7 +22,7 @@ public class DataSourcesTreatmentAndRepresentativeness {
 
     String deviationsFromSelectionAndCombinationPrinciples;
 
-    List<ReferenceToDataHandlingPrinciples> referenceToDataHandlingPrinciples = new ArrayList<ReferenceToDataHandlingPrinciples>();
+    List<ReferenceToDataSource> referenceToDataSource = new ArrayList<ReferenceToDataSource>();
 
     String annualSupplyOrProductionVolume;
 
@@ -30,6 +30,7 @@ public class DataSourcesTreatmentAndRepresentativeness {
 
     String useAdviceForDataSet;
 
+    String dataTreatmentAndExtrapolationsPrinciples;
 
     public String getDataCutOffAndCompletenessPrinciples() {
         return dataCutOffAndCompletenessPrinciples;
@@ -47,8 +48,8 @@ public class DataSourcesTreatmentAndRepresentativeness {
         return deviationsFromSelectionAndCombinationPrinciples;
     }
 
-    public List<ReferenceToDataHandlingPrinciples> getReferenceToDataHandlingPrinciples() {
-        return referenceToDataHandlingPrinciples;
+    public List<ReferenceToDataSource> getReferenceToDataSources() {
+        return referenceToDataSource;
     }
 
     public String getAnnualSupplyOrProductionVolume() {
@@ -62,4 +63,9 @@ public class DataSourcesTreatmentAndRepresentativeness {
     public String getUseAdviceForDataSet() {
         return useAdviceForDataSet;
     }
+
+    public String getDataTreatmentAndExtrapolationsPrinciples() {
+        return dataTreatmentAndExtrapolationsPrinciples;
+    }
+
 }

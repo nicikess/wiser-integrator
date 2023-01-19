@@ -1,7 +1,9 @@
 package ch.unisg.ics.interactions.wiser.queries.ilcd;
 
 import ch.unisg.ics.interactions.wiser.data.ilcd.DataSourcesTreatmentAndRepresentativeness;
+import ch.unisg.ics.interactions.wiser.data.ilcd.ReferenceToDataSource;
 import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
+import org.eclipse.rdf4j.query.algebra.Str;
 
 public class DataSourcesTreatmentAndRepresentativenessQueryBuilder {
 
@@ -18,7 +20,7 @@ public class DataSourcesTreatmentAndRepresentativenessQueryBuilder {
         String query =
                 "PREFIX " + VocabularyILCD.ilcdProcessPrefix + "\n" +
                 "PREFIX " + VocabularyILCD.ilcdCommonGroupsPrefix + "\n" +
-                "PREFIX " + VocabularyILCD.ilcdDatatypes + "\n" +
+                "PREFIX " + VocabularyILCD.ilcdDatatypesPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?dataSourcesTreatmentAndRepresentativeness a " + VocabularyILCD.dataSourcesTreatmentAndRepresentativenessType + ";\n" +
@@ -26,6 +28,7 @@ public class DataSourcesTreatmentAndRepresentativenessQueryBuilder {
                         VocabularyILCD.deviationsFromCutOffAndCompletenessPrinciples + " \"" + dataSourcesTreatmentAndRepresentativeness.getDeviationsFromCutOffAndCompletenessPrinciples() + "\";\n" +
                         VocabularyILCD.dataSelectionAndCombinationPrinciples + " \"" + dataSourcesTreatmentAndRepresentativeness.getDataSelectionAndCombinationPrinciples() + "\";\n" +
                         VocabularyILCD.deviationsFromSelectionAndCombinationPrinciples + " \"" + dataSourcesTreatmentAndRepresentativeness.getDeviationsFromSelectionAndCombinationPrinciples() + "\";\n" +
+                        VocabularyILCD.dataTreatmentAndExtrapolationsPrinciples + " \"" + dataSourcesTreatmentAndRepresentativeness.getDataTreatmentAndExtrapolationsPrinciples() + "\";\n" +
                         "} where {" + "\n" +
                         "BIND(IRI(" + VocabularyILCD.dataSourcesTreatmentAndRepresentativenessIRI + activityIdILCD + "') AS ?dataSourcesTreatmentAndRepresentativeness)" + "\n" +
                         "}";

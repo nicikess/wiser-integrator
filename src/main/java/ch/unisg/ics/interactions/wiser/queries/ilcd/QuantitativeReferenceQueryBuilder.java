@@ -19,7 +19,7 @@ public class QuantitativeReferenceQueryBuilder {
         String query =
                 "PREFIX " + VocabularyILCD.ilcdProcessPrefix + "\n" +
                 "PREFIX " + VocabularyILCD.ilcdCommonGroupsPrefix + "\n" +
-                "PREFIX " + VocabularyILCD.ilcdCommonEnumeration + "\n" +
+                "PREFIX " + VocabularyILCD.ilcdCommonEnumerationPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?quantitativeReference a " + VocabularyILCD.quantitativeReference + ";\n" +

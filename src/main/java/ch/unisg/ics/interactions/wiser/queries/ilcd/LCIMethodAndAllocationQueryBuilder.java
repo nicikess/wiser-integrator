@@ -3,12 +3,12 @@ package ch.unisg.ics.interactions.wiser.queries.ilcd;
 import ch.unisg.ics.interactions.wiser.data.ilcd.LCIMethodAndAllocation;
 import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 
-public class LCAMethodAndValidationQueryBuilder {
+public class LCIMethodAndAllocationQueryBuilder {
 
     private LCIMethodAndAllocation LCIMethodAndAllocation;
     private String activityIdILCD;
 
-    public LCAMethodAndValidationQueryBuilder(LCIMethodAndAllocation LCIMethodAndAllocation, String activityIdILCD) {
+    public LCIMethodAndAllocationQueryBuilder(LCIMethodAndAllocation LCIMethodAndAllocation, String activityIdILCD) {
         this.LCIMethodAndAllocation = LCIMethodAndAllocation;
         this.activityIdILCD = activityIdILCD;
     }
