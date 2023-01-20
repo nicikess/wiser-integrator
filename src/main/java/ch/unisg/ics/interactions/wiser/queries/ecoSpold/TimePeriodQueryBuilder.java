@@ -7,10 +7,12 @@ public class TimePeriodQueryBuilder {
 
     private TimePeriod timePeriod;
     private String activityIdEcoSpold;
+    private String identifier;
 
     public TimePeriodQueryBuilder(TimePeriod timePeriod, String activityIdEcoSpold) {
         this.timePeriod = timePeriod;
         this.activityIdEcoSpold = activityIdEcoSpold;
+        this.identifier = VocabularyEcoSpold.timePeriodIRI + activityIdEcoSpold;
     }
 
     public String createTimePeriodInsertionQuery() {
@@ -25,12 +27,15 @@ public class TimePeriodQueryBuilder {
                         VocabularyEcoSpold.endDate + " \"" + timePeriod.getEndDate() + "\";\n" +
                         VocabularyEcoSpold.isDataValidForEntirePeriod + " " + timePeriod.getDataValidForEntirePeriod() + ";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyEcoSpold.timePeriodIRI + activityIdEcoSpold + "') AS ?timePeriod)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?timePeriod)" + "\n" +
                         "}";
 
         return query;
 
     }
 
+    public String getIdentifier() {
+        return identifier;
+    }
 
 }

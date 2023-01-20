@@ -7,10 +7,12 @@ public class GeographyQueryBuilder {
 
     private Geography geography;
     private String activityIdEcoSpold;
+    private String identifier;
 
     public GeographyQueryBuilder(Geography geography, String activityIdEcoSpold) {
         this.geography = geography;
         this.activityIdEcoSpold = activityIdEcoSpold;
+        this.identifier = VocabularyEcoSpold.fileAttributesIRI + activityIdEcoSpold;
     }
 
     public String createGeographyInsertionQuery() {
@@ -24,11 +26,15 @@ public class GeographyQueryBuilder {
                         VocabularyEcoSpold.geographyShortName + " \"" + geography.getShortname() + "\";\n" +
                         VocabularyEcoSpold.geographyComment + " \"" + geography.getComment().get(0).getText().get(0) + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyEcoSpold.geographyIRI + activityIdEcoSpold + "') AS ?geography)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?geography)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
     
 }

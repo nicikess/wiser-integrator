@@ -7,10 +7,13 @@ public class DataGeneratorAndPublicationQueryBuilder {
 
     private DataGeneratorAndPublication dataGeneratorAndPublication;
     private String activityIdEcoSpold;
+    private String identifier;
 
     public DataGeneratorAndPublicationQueryBuilder(DataGeneratorAndPublication dataGeneratorAndPublication, String activityIdEcoSpold) {
         this.dataGeneratorAndPublication = dataGeneratorAndPublication;
         this.activityIdEcoSpold = activityIdEcoSpold;
+        this.identifier = VocabularyEcoSpold.dataGeneratorAndPublicationIRI + activityIdEcoSpold;
+
     }
 
     public String createDataGeneratorAndPublicationInsertionQuery() {
@@ -31,11 +34,15 @@ public class DataGeneratorAndPublicationQueryBuilder {
                         VocabularyEcoSpold.dataGeneratorAndPublicationAccessRestrictedTo + " " + dataGeneratorAndPublication.getAccessRestrictedTo() + ";\n" +
                         VocabularyEcoSpold.dataGeneratorAndPublicationCompanyIdOverwrittenByChild + " " + dataGeneratorAndPublication.getCompanyIdOverwrittenByChild() + ";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyEcoSpold.dataGeneratorAndPublicationIRI + activityIdEcoSpold + "') AS ?dataGeneratorAndPublication)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?dataGeneratorAndPublication)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
     
 }

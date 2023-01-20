@@ -7,10 +7,14 @@ public class PropertyQueryBuilder {
 
     private Property property;
     private String activityIdEcoSpold;
+    private String exchangeId;
+    private String identifier;
 
-    public PropertyQueryBuilder(Property property, String activityIdEcoSpold) {
+    public PropertyQueryBuilder(Property property, String activityIdEcoSpold, String exchangeId) {
         this.property = property;
         this.activityIdEcoSpold = activityIdEcoSpold;
+        this.exchangeId = exchangeId;
+        this.identifier = VocabularyEcoSpold.propertyIRI + activityIdEcoSpold + "/"+ exchangeId + "/"+ property.getPropertyId();
     }
 
     public String createPropertyInsertionQuery() {
@@ -30,11 +34,15 @@ public class PropertyQueryBuilder {
                         VocabularyEcoSpold.propertyUnitName + " \"" + property.getUnitName() + "\";\n" +
                         VocabularyEcoSpold.propertyComment + " \"" + property.getComment() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyEcoSpold.propertyIRI + activityIdEcoSpold + "') AS ?property)" + "\n" +
+                        "BIND(IRI('" + VocabularyEcoSpold.propertyIRI + activityIdEcoSpold + "/"+ this.exchangeId + "/"+ property.getPropertyId() +"') AS ?property)" + "\n" +
                         "}";
 
         return query;
 
     }
-    
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
 }

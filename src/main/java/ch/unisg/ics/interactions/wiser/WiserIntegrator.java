@@ -6,6 +6,7 @@ import ch.unisg.ics.interactions.wiser.data.ecoSpold.FileAttributes;
 import ch.unisg.ics.interactions.wiser.data.ilcd.ProcessDataSet;
 import ch.unisg.ics.interactions.wiser.data.ilcd.ReferenceToDataSource;
 import ch.unisg.ics.interactions.wiser.filter.XMLReaderWithoutNamespace;
+import ch.unisg.ics.interactions.wiser.integrator.InsertEcoSpoldData;
 import ch.unisg.ics.interactions.wiser.queries.ecoSpold.*;
 import ch.unisg.ics.interactions.wiser.queries.ilcd.*;
 import ch.unisg.ics.interactions.wiser.queries.ilcd.DataEntryByQueryBuilder;
@@ -41,9 +42,11 @@ public class WiserIntegrator {
         EcoSpold ecoSpold = integrator.unmarshalEcoSpold(EcoSpoldTestFileName);
         ProcessDataSet ilcd = integrator.unmarshalILCD(ILCDTestFileName);
 
-        String activity = new TimeQueryBuilder(ilcd.getProcessInformation().getTime(), "100").createTimeInsertionQuery();
+        InsertEcoSpoldData insertEcoSpoldData = new InsertEcoSpoldData(ecoSpold);
 
-        System.out.println(activity);
+        //String activity = new IntermediateExchangeQueryBuilder(ecoSpold.getActivityDataset().getFlowData().getIntermediateExchange().get(0), "100").createIntermediateExchangeInsertionQuery();
+
+        //System.out.println(activity);
 
         //Link EcoSpold
         //Link ILCD

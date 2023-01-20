@@ -6,9 +6,11 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
 public class ActivityQueryBuilder {
 
     private Activity activity;
+    private String identifier;
 
     public ActivityQueryBuilder(Activity activity) {
         this.activity = activity;
+        this.identifier = VocabularyEcoSpold.activityIRI + activity.getId();
     }
 
     public String createActivityInsertionQuery() {
@@ -31,7 +33,7 @@ public class ActivityQueryBuilder {
                         VocabularyEcoSpold.includedActivitiesEnd + " \"" + activity.getIncludedActivitiesEnd() + "\";\n" +
                         VocabularyEcoSpold.generalComment + " " + addCommentsToQueryString() + ".\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyEcoSpold.activityIRI + activity.getId() + "') AS ?activity)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?activity)" + "\n" +
                         "}";
 
         return query;
@@ -64,4 +66,7 @@ public class ActivityQueryBuilder {
 
     }
 
+    public String getIdentifier() {
+        return identifier;
+    }
 }

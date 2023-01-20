@@ -7,10 +7,12 @@ public class FileAttributesQueryBuilder {
 
     private FileAttributes fileAttributes;
     private String activityIdEcoSpold;
+    private String identifier;
 
     public FileAttributesQueryBuilder(FileAttributes fileAttributes, String activityIdEcoSpold) {
         this.fileAttributes = fileAttributes;
         this.activityIdEcoSpold = activityIdEcoSpold;
+        this.identifier = VocabularyEcoSpold.fileAttributesIRI + activityIdEcoSpold;
     }
 
     public String createFileAttributesInsertionQuery() {
@@ -34,11 +36,15 @@ public class FileAttributesQueryBuilder {
                         VocabularyEcoSpold.fileTimestamp + " \"" + fileAttributes.getFileTimestamp() + "\";\n" +
                         VocabularyEcoSpold.contextId + " \"" + fileAttributes.getContextId() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyEcoSpold.fileAttributesIRI + activityIdEcoSpold + "') AS ?fileAttributes)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?fileAttributes)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
     
 }

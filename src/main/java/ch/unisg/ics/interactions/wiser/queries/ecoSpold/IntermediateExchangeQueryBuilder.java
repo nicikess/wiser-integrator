@@ -2,16 +2,21 @@
 package ch.unisg.ics.interactions.wiser.queries.ecoSpold;
 
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.IntermediateExchange;
+import ch.unisg.ics.interactions.wiser.data.ecoSpold.Property;
 import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
+
+import java.util.List;
 
 public class IntermediateExchangeQueryBuilder {
 
     private IntermediateExchange intermediateExchange;
     private String activityIdEcoSpold;
+    private String identifier;
 
     public IntermediateExchangeQueryBuilder(IntermediateExchange intermediateExchange, String activityIdEcoSpold) {
         this.intermediateExchange = intermediateExchange;
         this.activityIdEcoSpold = activityIdEcoSpold;
+        this.identifier = VocabularyEcoSpold.intermediateExchangeIRI + activityIdEcoSpold;
     }
 
     public String createIntermediateExchangeInsertionQuery() {
@@ -34,11 +39,17 @@ public class IntermediateExchangeQueryBuilder {
                         VocabularyEcoSpold.exchangeName + " \"" + intermediateExchange.getName() + "\";\n" +
                         VocabularyEcoSpold.exchangeUnitName + " \"" + intermediateExchange.getUnitName() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyEcoSpold.intermediateExchangeIRI + activityIdEcoSpold + "') AS ?intermediateExchange)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?intermediateExchange)" + "\n" +
                         "}";
 
         return query;
 
     }
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
+
 
 }

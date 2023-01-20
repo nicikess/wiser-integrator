@@ -35,7 +35,7 @@
                     <text xml:lang="en" index="0">Average technology for the aluminium produced globally.</text>
                 </comment>
             </technology>
-            <timePeriod startDate="2015-01-01" endDate="2015-12-31" isDataValidForEntirePeriod="true" />
+            <timePeriod startDate="2030-01-01" endDate="2015-12-31" isDataValidForEntirePeriod="true" />
             <macroEconomicScenario macroEconomicScenarioId="d9f57f0a-a01f-42eb-a57b-8f18d6635801">
                 <name xml:lang="en">Business-as-Usual</name>
             </macroEconomicScenario>

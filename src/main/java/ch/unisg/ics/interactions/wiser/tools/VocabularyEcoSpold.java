@@ -13,20 +13,20 @@ public class VocabularyEcoSpold{
     public static String ecoSpoldDataTypesPrefix = "ecodata: <http://www.EcoInvent.org/EcoSpold02/dataTypes#>";
 
     //IRI
-    public static String activityIRI = "'http://www.EcoInvent.org/EcoSpold02/activity/";
-    public static String classificationIRI = "'http://www.EcoInvent.org/EcoSpold02/classification/";
-    public static String geographyIRI = "'http://www.EcoInvent.org/EcoSpold02/geography/";
-    public static String technologyIRI = "'http://www.EcoInvent.org/EcoSpold02/technology/";
-    public static String timePeriodIRI = "'http://www.EcoInvent.org/EcoSpold02/timePeriod/";
-    public static String macroEconomicScenarioIRI = "'http://www.EcoInvent.org/EcoSpold02/macroEconomicScenario/";
-    public static String dataEntryByIRI = "'http://www.EcoInvent.org/EcoSpold02/dataEntryBy/";
-    public static String dataGeneratorAndPublicationIRI = "'http://www.EcoInvent.org/EcoSpold02/dataGeneratorAndPublication/";
-    public static String fileAttributesIRI = "'http://www.EcoInvent.org/EcoSpold02/fileAttributes/";
-    public static String reviewIRI = "'http://www.EcoInvent.org/EcoSpold02/review/";
-    public static String representativenessIRI = "'http://www.EcoInvent.org/EcoSpold02/representativeness/";
-    public static String propertyIRI = "'http://www.EcoInvent.org/EcoSpold02/property/";
-    public static String uncertaintyIRI = "'http://www.EcoInvent.org/EcoSpold02/property/";
-    public static String intermediateExchangeIRI = "'http://www.EcoInvent.org/EcoSpold02/intermediateExchange/";
+    public static String activityIRI = "http://www.EcoInvent.org/EcoSpold02/activity/";
+    public static String classificationIRI = "http://www.EcoInvent.org/EcoSpold02/classification/";
+    public static String geographyIRI = "http://www.EcoInvent.org/EcoSpold02/geography/";
+    public static String technologyIRI = "http://www.EcoInvent.org/EcoSpold02/technology/";
+    public static String timePeriodIRI = "http://www.EcoInvent.org/EcoSpold02/timePeriod/";
+    public static String macroEconomicScenarioIRI = "http://www.EcoInvent.org/EcoSpold02/macroEconomicScenario/";
+    public static String dataEntryByIRI = "http://www.EcoInvent.org/EcoSpold02/dataEntryBy/";
+    public static String dataGeneratorAndPublicationIRI = "http://www.EcoInvent.org/EcoSpold02/dataGeneratorAndPublication/";
+    public static String fileAttributesIRI = "http://www.EcoInvent.org/EcoSpold02/fileAttributes/";
+    public static String reviewIRI = "http://www.EcoInvent.org/EcoSpold02/review/";
+    public static String representativenessIRI = "http://www.EcoInvent.org/EcoSpold02/representativeness/";
+    public static String propertyIRI = "http://www.EcoInvent.org/EcoSpold02/property/";
+    public static String uncertaintyIRI = "http://www.EcoInvent.org/EcoSpold02/property/";
+    public static String intermediateExchangeIRI = "http://www.EcoInvent.org/EcoSpold02/intermediateExchange/";
 
 
     //Activity
@@ -88,6 +88,8 @@ public class VocabularyEcoSpold{
     public static String exchangeUnitName = "ecoflow:unitName";
     public static String exchangeProductionVolumeComment = "ecoflow:productionVolumeComment";
     public static String exchangeOutputGroup = "ecoflow:outputGroup";
+    public static String exchangeProperty = "ecoflow:property";
+
 
     //IntermediateExchange ProductionUncertainty
     public static String uncertainty = "ecotype:uncertainty";
@@ -163,5 +165,23 @@ public class VocabularyEcoSpold{
     public static String systemModelName = "ecometa:systemModelName";
     public static String samplingProcedure = "ecometa:samplingProcedure";
     public static String extrapolations = "ecometa:extrapolations";
+
+    //Connect individuals
+    public static String classificationIndividual = "ecobase:classification";
+    public static String geographyIndividual = "ecoact:geography";
+    public static String macroEconomicScenarioIndividual = "ecoact:macroEconomicScenario";
+    public static String timePeriodIndividual = "ecobase:timePeriod";
+    public static String technologyIndividual = "ecoact:technology";
+    public static String representativenessIndividual = "ecoact:representativeness";
+    public static String dataEntryByIndividual = "ecobase:dataEntryBy";
+    public static String dataGeneratorAndPublicationIndividual = "ecoact:dataGeneratorAndPublication";
+    public static String fileAttributesIndividual = "ecoact:fileAttributes";
+    public static String ecoactivityIndividual = "ecoact:representativeness";
+    public static String reviewIndividual = "ecoact:review";
+    public static String customExchangeIndividual = "ecobase:customExchange";
+
+    //Connect properties with IntermediateExchange
+    public static String propertyExchangeIndividual = "ecoflow:property";
+    public static String classificationExchangeIndividual = "ecoflow:classification";
 
 }

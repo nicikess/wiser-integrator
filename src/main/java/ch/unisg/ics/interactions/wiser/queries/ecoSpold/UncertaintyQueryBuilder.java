@@ -7,10 +7,12 @@ public class UncertaintyQueryBuilder {
 
     private ProductionVolumeUncertainty productionVolumeUncertainty;
     private String activityIdEcoSpold;
+    private String identifier;
 
     public UncertaintyQueryBuilder(ProductionVolumeUncertainty productionVolumeUncertainty, String activityIdEcoSpold) {
         this.productionVolumeUncertainty = productionVolumeUncertainty;
         this.activityIdEcoSpold = activityIdEcoSpold;
+        this.identifier = VocabularyEcoSpold.uncertaintyIRI + activityIdEcoSpold;
     }
 
     public String createProductionVolumeUncertaintyInsertionQuery() {
@@ -32,11 +34,15 @@ public class UncertaintyQueryBuilder {
                         VocabularyEcoSpold.furtherTechnologyCorrelation + " " + productionVolumeUncertainty.getPedigreeMatrix().getFurtherTechnologyCorrelation() + ";\n" +
                         VocabularyEcoSpold.uncertaintyComment + " \"" + productionVolumeUncertainty.getComment() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyEcoSpold.uncertaintyIRI + activityIdEcoSpold + "') AS ?productionVolumeUncertainty)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?productionVolumeUncertainty)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
     
 }

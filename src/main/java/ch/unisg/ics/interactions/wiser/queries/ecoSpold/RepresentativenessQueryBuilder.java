@@ -7,10 +7,12 @@ public class RepresentativenessQueryBuilder {
 
     private Representativeness representativeness;
     private String activityIdEcoSpold;
+    private String identifier;
 
     public RepresentativenessQueryBuilder(Representativeness representativeness, String activityIdEcoSpold) {
         this.representativeness = representativeness;
         this.activityIdEcoSpold = activityIdEcoSpold;
+        this.identifier = VocabularyEcoSpold.representativenessIRI + activityIdEcoSpold;
     }
 
     public String createRepresentativenessInsertionQuery() {
@@ -25,11 +27,15 @@ public class RepresentativenessQueryBuilder {
                         VocabularyEcoSpold.samplingProcedure + " \"" + representativeness.getSamplingProcedure() + "\";\n" +
                         VocabularyEcoSpold.extrapolations + " \"" + representativeness.getExtrapolations() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyEcoSpold.representativenessIRI + activityIdEcoSpold + "') AS ?representativeness)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?representativeness)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
     
 }

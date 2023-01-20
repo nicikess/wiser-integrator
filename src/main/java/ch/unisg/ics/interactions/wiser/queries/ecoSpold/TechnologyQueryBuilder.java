@@ -7,10 +7,12 @@ public class TechnologyQueryBuilder {
 
     private Technology technology;
     private String activityIdEcoSpold;
+    private String identifier;
 
     public TechnologyQueryBuilder(Technology technology, String activityIdEcoSpold) {
         this.technology = technology;
         this.activityIdEcoSpold = activityIdEcoSpold;
+        this.identifier = VocabularyEcoSpold.technologyIRI + activityIdEcoSpold;
     }
 
     public String createTechnologyInsertionQuery() {
@@ -25,12 +27,15 @@ public class TechnologyQueryBuilder {
                         VocabularyEcoSpold.technologyLevel + " " + technology.getTechnologyLevel() + ";\n" +
                         VocabularyEcoSpold.technologyComment + " \"" + technology.getComment().get(0).getText().get(0) + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyEcoSpold.technologyIRI + activityIdEcoSpold + "') AS ?technology)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?technology)" + "\n" +
                         "}";
 
         return query;
 
     }
 
+    public String getIdentifier() {
+        return identifier;
+    }
 
 }

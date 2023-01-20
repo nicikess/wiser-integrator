@@ -7,10 +7,12 @@ public class DataEntryByQueryBuilder {
 
     private DataEntryBy dataEntryBy;
     private String activityIdEcoSpold;
+    private String identifier;
 
     public DataEntryByQueryBuilder(DataEntryBy dataEntryBy, String activityIdEcoSpold) {
         this.dataEntryBy = dataEntryBy;
         this.activityIdEcoSpold = activityIdEcoSpold;
+        this.identifier = VocabularyEcoSpold.dataEntryByIRI + activityIdEcoSpold;
     }
 
     public String createDataEntryByInsertionQuery() {
@@ -25,11 +27,14 @@ public class DataEntryByQueryBuilder {
                         VocabularyEcoSpold.dataEntryByPersonName + " \"" + dataEntryBy.getPersonName() + "\";\n" +
                         VocabularyEcoSpold.dataEntryByPersonEmail + " \"" + dataEntryBy.getPersonEmail() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyEcoSpold.dataEntryByIRI + activityIdEcoSpold + "') AS ?dataEntryBy)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?dataEntryBy)" + "\n" +
                         "}";
 
         return query;
 
     }
-    
+
+    public String getIdentifier() {
+        return identifier;
+    }
 }
