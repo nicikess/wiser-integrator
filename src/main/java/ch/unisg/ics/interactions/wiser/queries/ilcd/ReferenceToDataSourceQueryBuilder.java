@@ -3,17 +3,17 @@ package ch.unisg.ics.interactions.wiser.queries.ilcd;
 import ch.unisg.ics.interactions.wiser.data.ilcd.ReferenceToDataSource;
 import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 
-public class ReferenceQueryBuilder {
+public class ReferenceToDataSourceQueryBuilder {
 
     private ReferenceToDataSource referenceToDataSource;
     private String activityIdILCD;
 
-    public ReferenceQueryBuilder(ReferenceToDataSource referenceToDataSource, String activityIdILCD) {
+    public ReferenceToDataSourceQueryBuilder(ReferenceToDataSource referenceToDataSource, String activityIdILCD) {
         this.referenceToDataSource = referenceToDataSource;
         this.activityIdILCD = activityIdILCD;
     }
 
-    public String createDataSourceInsertionQuery() {
+    public String createReferenceToDataSourceInsertionQuery() {
 
         String query =
                 "PREFIX " + VocabularyILCD.ilcdProcessPrefix + "\n" +
@@ -27,7 +27,7 @@ public class ReferenceQueryBuilder {
                         VocabularyILCD.referenceURI + " \"" + referenceToDataSource.getUri() + "\";\n" +
                         VocabularyILCD.referenceShortDescription + " \"" + referenceToDataSource.getShortDescription() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.referenceIRI + activityIdILCD + "') AS ?referenceToDataSource)" + "\n" +
+                        "BIND(IRI(" + VocabularyILCD.referenceToDataSourceIRI + activityIdILCD + "') AS ?referenceToDataSource)" + "\n" +
                         "}";
 
         return query;

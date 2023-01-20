@@ -10,6 +10,7 @@ public class VocabularyEcoSpold{
     public static String ecoSpoldSourcePrefix = "ecosource: <http://www.EcoInvent.org/EcoSpold02/source#>";
     public static String ecoSpoldActivityPrefix = "ecoact: <http://www.EcoInvent.org/EcoSpold02/activity#>";
     public static String ecoSpoldFlowdataPrefix = "ecoflow: <http://www.EcoInvent.org/EcoSpold02/flowdata#>";
+    public static String ecoSpoldDataTypesPrefix = "ecodata: <http://www.EcoInvent.org/EcoSpold02/dataTypes#>";
 
     //IRI
     public static String activityIRI = "'http://www.EcoInvent.org/EcoSpold02/activity/";
@@ -18,6 +19,15 @@ public class VocabularyEcoSpold{
     public static String technologyIRI = "'http://www.EcoInvent.org/EcoSpold02/technology/";
     public static String timePeriodIRI = "'http://www.EcoInvent.org/EcoSpold02/timePeriod/";
     public static String macroEconomicScenarioIRI = "'http://www.EcoInvent.org/EcoSpold02/macroEconomicScenario/";
+    public static String dataEntryByIRI = "'http://www.EcoInvent.org/EcoSpold02/dataEntryBy/";
+    public static String dataGeneratorAndPublicationIRI = "'http://www.EcoInvent.org/EcoSpold02/dataGeneratorAndPublication/";
+    public static String fileAttributesIRI = "'http://www.EcoInvent.org/EcoSpold02/fileAttributes/";
+    public static String reviewIRI = "'http://www.EcoInvent.org/EcoSpold02/review/";
+    public static String representativenessIRI = "'http://www.EcoInvent.org/EcoSpold02/representativeness/";
+    public static String propertyIRI = "'http://www.EcoInvent.org/EcoSpold02/property/";
+    public static String uncertaintyIRI = "'http://www.EcoInvent.org/EcoSpold02/property/";
+    public static String intermediateExchangeIRI = "'http://www.EcoInvent.org/EcoSpold02/intermediateExchange/";
+
 
     //Activity
     public static String activity = "ecometa:TActivity";
@@ -80,6 +90,7 @@ public class VocabularyEcoSpold{
     public static String exchangeOutputGroup = "ecoflow:outputGroup";
 
     //IntermediateExchange ProductionUncertainty
+    public static String uncertainty = "ecotype:uncertainty";
     public static String meanValue = "ecotype:meanValue";
     public static String mu = "ecotype:mu";
     public static String variance = "ecotype:variance";
@@ -92,6 +103,7 @@ public class VocabularyEcoSpold{
     public static String uncertaintyComment = "ecometa:comment";
 
     //Property
+    public static String property = "ecometa:property";
     public static String propertyId = "ecotype:propertyId";
     public static String propertyAmount = "ecoflow:amount";
     public static String propertyIsDefiningValue = "ecotype:isDefiningValue";
@@ -100,7 +112,56 @@ public class VocabularyEcoSpold{
     public static String propertyUnitName = "ecoflow:unitName";
     public static String propertyComment = "ecometa:comment";
 
+    //Data entry by
+    public static String dataEntryBy = "ecometa:TDataEntryBy";
+    public static String dataEntryByPersonId = "ecometa:personId";
+    public static String dataEntryByIsActiveAuthor = "ecometa:isActiveAuthor";
+    public static String dataEntryByPersonName = "ecometa:personName";
+    public static String dataEntryByPersonEmail = "ecometa:personEmail";
 
+    //Data generation and publication
+    public static String dataGeneratorAndPublication = "ecometa:TDataGeneratorAndPublication";
+    public static String dataGeneratorAndPublicationPersonId = "ecometa:personId";
+    public static String dataGeneratorAndPublicationPersonName = "ecometa:personName";
+    public static String dataGeneratorAndPublicationPersonEmail = "ecometa:personEmail";
+    public static String dataGeneratorAndPublicationDataPublishedIn = "ecometa:dataPublishedIn";
+    public static String dataGeneratorAndPublicationPublishedSourceId = "ecometa:publishedSourceId";
+    public static String dataGeneratorAndPublicationPublishedSourceYear = "ecometa:publishedSourceYear";
+    public static String dataGeneratorAndPublicationPublishedSourceFirstAuthor = "ecometa:publishedSourceFirstAuthor";
+    public static String dataGeneratorAndPublicationIsCopyrightProtected = "ecometa:isCopyrightProtected";
+    public static String dataGeneratorAndPublicationAccessRestrictedTo = "ecometa:accessRestrictedTo";
+    public static String dataGeneratorAndPublicationCompanyIdOverwrittenByChild = "ecometa:companyIdOverwrittenByChild";
 
+    //File attributes
+    public static String fileAttributes = "ecometa:TFileAttributes";
+    public static String majorRelease = "ecodata:majorRelease";
+    public static String minorRelease = "ecodata:minorRelease";
+    public static String majorRevision = "ecodata:majorRevision";
+    public static String minorRevision = "ecodata:minorRevision";
+    public static String internalSchemaVersion = "ecometa:internalSchemaVersion";
+    public static String defaultLanguage = "ecometa:defaultLanguage";
+    public static String creationTimestamp = "ecometa:creationTimestamp";
+    public static String lastEditTimestamp = "ecometa:lastEditTimestamp";
+    public static String fileGenerator = "ecometa:fileGenerator";
+    public static String fileTimestamp = "ecometa:fileTimestamp";
+    public static String contextId = "ecometa:contextId";
+
+    //Review
+    public static String review = "ecometa:TReview";
+    public static String majorReleaseReview = "ecometa:majorRelease";
+    public static String minorReleaseReview = "ecometa:minorRelease";
+    public static String majorRevisionReview = "ecometa:majorRevision";
+    public static String minorRevisionReview = "ecometa:minorRevision";
+    public static String reviewerId = "ecometa:reviewerId";
+    public static String reviewerName = "ecometa:reviewerName";
+    public static String reviewerEmail = "ecometa:reviewerEmail";
+    public static String reviewDate = "ecometa:reviewDate";
+
+    //Representativeness
+    public static String representativeness = "ecometa:TRepresentativeness";
+    public static String systemModelId = "ecometa:systemModelId";
+    public static String systemModelName = "ecometa:systemModelName";
+    public static String samplingProcedure = "ecometa:samplingProcedure";
+    public static String extrapolations = "ecometa:extrapolations";
 
 }

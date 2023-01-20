@@ -24,8 +24,19 @@ public class VocabularyILCD {
     public static String datasetInformationIRI = "'http://lca.jrc.it/ILCD/dataSetInformation/";
     public static String datasetCommissionerAndGoalIRI = "'http://lca.jrc.it/ILCD/commissionerAndGoal/";
     public static String dataSourcesTreatmentAndRepresentativenessIRI = "'http://lca.jrc.it/ILCD/dataSourcesTreatmentAndRepresentativeness/";
-    public static String referenceIRI = "'http://lca.jrc.it/ILCD/dataSource/";
+    public static String referenceToDataSourceIRI = "'http://lca.jrc.it/ILCD/dataSource/";
     public static String reviewIRI = "'http://lca.jrc.it/ILCD/review/";
+    public static String referenceToNameOfReviewerAndInstitutionIRI = "'http://lca.jrc.it/ILCD/referenceToReviewerAndInstitution/";
+    public static String dataGeneratorIRI = "'http://lca.jrc.it/ILCD/dataGenerator/";
+    public static String referenceToPersonOrEntityGeneratingTheDataSetIRI = "'http://lca.jrc.it/ILCD/referenceToPersonOrEntityGeneratingTheDataSet/";
+    public static String dataEntryByIRI = "'http://lca.jrc.it/ILCD/dataEntryBy";
+    public static String referenceToDataSetFormatIRI = "'http://lca.jrc.it/ILCD/referenceToDataSetFormat/";
+    public static String referenceToPersonOrEntityEnteringTheDataIRI = "'http://lca.jrc.it/ILCD/referenceToPersonOrEntityEnteringTheData/";
+    public static String publicationAndOwnershipIRI = "'http://lca.jrc.it/ILCD/publicationAndownership/";
+    public static String referenceToOwnershipOfDataSetIRI = "'http://lca.jrc.it/ILCD/referenceToOwnershipOfDataSet/";
+    public static String referenceToUnchangedRepublicationIRI = "'http://lca.jrc.it/ILCD/referenceToUnchangedRepublication/";
+    public static String exchangeIRI = "'http://lca.jrc.it/ILCD/exchanges/";
+    public static String referenceToFlowDataSetIRI= "'http://lca.jrc.it/ILCD/referenceToFlowDataSet/";
 
     //Time
     public static String time = "process:TimeRepresentativenessType";
@@ -63,7 +74,7 @@ public class VocabularyILCD {
     //Classifiction & Class
     public static String classifictionOther = "commonGroups:other";
 
-    //DataSourcesTreatmentAndRepresentativeness
+    //Data sources treatment and representativeness
     public static String dataSourcesTreatmentAndRepresentativenessType = "process:DataSourcesTreatmentAndRepresentativenessType";
     public static String dataCutOffAndCompletenessPrinciples = "process:dataCutOffAndCompletenessPrinciples";
     public static String deviationsFromCutOffAndCompletenessPrinciples = "process:deviationsFromCutOffAndCompletenessPrinciples";
@@ -83,8 +94,41 @@ public class VocabularyILCD {
     public static String reviewType = "commonGroups:Type";
     public static String reviewDetails = "commonGroups:reviewDetails";
 
+    //Reference to name of reviewer and institution
+    public static String referenceToNameOfReviewerAndInstitution = "commonGroups:referenceToNameOfReviewerAndInstitution";
 
+    //Data generator
+    public static String dataGenerator = "process:DataGeneratorType";
+    public static String referenceToPersonOrEntityGeneratingTheDataSet = "commonGroups:referenceToPersonOrEntityGeneratingTheDataSet";
 
+    //Reference to person or entity generating the data
+    public static String referenceToPersonOrEntityGeneratingTheData = "process:ToPersonOrEntityGeneratingTheData";
 
+    //Data entry by
+    public static String dataEntryByType = "process:DataEntryByType";
+    public static String dataEntryByTimeStamp = "commonGroups:timeStamp";
+
+    //Reference to data set format
+    public static String referenceToDataSetFormat = "commonGroups:GlobalReferenceType";
+
+    //Publication and ownership
+    public static String publicationAndOwnership = "process:PublicationAndOwnershipType";
+    public static String dateOfLastRevision = "commonGroups:dateOfLastRevision";
+    public static String dataSetVersion = "commonGroups:dataSetVersion";
+    public static String copyright = "commonGroups:copyright";
+    public static String accessRestrictions = "commonGroups:accessRestrictions";
+
+    //Exchanges
+    public static String exchange = "process:ExchangeType";
+    public static String exchangeDirection = "process:exchangeDirection";
+    public static String exchangeMeanAmount = "process:meanAmount";
+    public static String exchangeResultingAmount = "process:resultingAmount";
+
+    //Class
+    public static String classInfo = "commonGroups:ClassType";
+    public static String classLevelType = "dataTypes:levelType";
+    public static String classId = "commonGroups:classId";
+    public static String classNameData = "commonGroups:nameData";
+    public static String classFormat = "bridge:bEcoSpoldILC";
 
 }

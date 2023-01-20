@@ -1,4 +1,4 @@
-/*
+
 package ch.unisg.ics.interactions.wiser.queries.ecoSpold;
 
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.IntermediateExchange;
@@ -17,8 +17,8 @@ public class IntermediateExchangeQueryBuilder {
     public String createIntermediateExchangeInsertionQuery() {
 
         String query =
-                "PREFIX " + VocabularyEcoSpold.ecoSpoldDataMetaInformationPrefix + "\n" +
-                "PREFIX " + VocabularyEcoSpold.ecoSpoldDataFlowdataPrefix + "\n" +
+                "PREFIX " + VocabularyEcoSpold.ecoSpoldMetaInformationPrefix + "\n" +
+                "PREFIX " + VocabularyEcoSpold.ecoSpoldFlowdataPrefix + "\n" +
                 "PREFIX " + VocabularyEcoSpold.ecoSpoldDataTypesPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
@@ -34,8 +34,6 @@ public class IntermediateExchangeQueryBuilder {
                         VocabularyEcoSpold.exchangeProductionVolumeMathematicalRelation + " \"" + intermediateExchange.getProductionVolumeMathematicalRelation() + "\";\n" +
                         VocabularyEcoSpold.exchangeName + " \"" + intermediateExchange.getName() + "\";\n" +
                         VocabularyEcoSpold.exchangeUnitName + " \"" + intermediateExchange.getUnitName() + "\";\n" +
-                        intermediateProperties() +
-                        VocabularyEcoSpold + " \"" + intermediateExchange.getintermediateExchangeValue() + "\";\n" +
                         "} where {" + "\n" +
                         "BIND(IRI(" + VocabularyEcoSpold.intermediateExchangeIRI + activityIdEcoSpold + "') AS ?intermediateExchange)" + "\n" +
                         "}";
@@ -44,17 +42,4 @@ public class IntermediateExchangeQueryBuilder {
 
     }
 
-    public String intermediateProperties() {
-
-        String synonyms = "";
-
-        for (int i = 0; i < activity.getSynonyms().size(); i++) {
-            synonyms += VocabularyEcoSpold.synonym + " \"" + activity.getSynonyms().get(i) + "\";\n";
-        }
-
-        return synonyms;
-
-    }
-
-
-}*/
+}

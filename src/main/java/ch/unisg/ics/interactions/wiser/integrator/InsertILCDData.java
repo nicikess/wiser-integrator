@@ -105,7 +105,7 @@ public class InsertILCDData {
     private void insertReferenceToDataSource() {
 
         for (ReferenceToDataSource referenceToDataSource: ilcd.getModellingAndValidation().getDataSourcesTreatmentAndRepresentativeness().getReferenceToDataSources()) {
-            String insertQueryReferenceToDataSource = new ReferenceQueryBuilder(referenceToDataSource,activityIdILCD).createDataSourceInsertionQuery();
+            String insertQueryReferenceToDataSource = new ReferenceToDataSourceQueryBuilder(referenceToDataSource,activityIdILCD).createReferenceToDataSourceInsertionQuery();
             insertDataILCDToGraphDB(insertQueryReferenceToDataSource);
 
         }
