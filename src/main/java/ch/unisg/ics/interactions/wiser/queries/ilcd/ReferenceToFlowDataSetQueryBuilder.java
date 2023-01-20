@@ -16,7 +16,6 @@ public class ReferenceToFlowDataSetQueryBuilder {
     public String createReferenceToFlowDataSetInsertionQuery() {
 
         String query =
-                "PREFIX " + VocabularyILCD.ilcdProcessPrefix + "\n" +
                 "PREFIX " + VocabularyILCD.ilcdCommonGroupsPrefix + "\n" +
                 "PREFIX " + VocabularyILCD.ilcdDatatypesPrefix + "\n" +
                         "" + "\n" +
@@ -33,5 +32,19 @@ public class ReferenceToFlowDataSetQueryBuilder {
         return query;
 
     }
+
+    public String createReferenceToFlowDataSetInsertionWithoutPrefixQuery() {
+
+        String query =
+                        VocabularyILCD.referenceType + " \"" + referenceToFlowDataSet.getType() + "\";\n" +
+                        VocabularyILCD.referenceVersion + " \"" + referenceToFlowDataSet.getVersion() + "\";\n" +
+                        VocabularyILCD.referenceURI + " \"" + referenceToFlowDataSet.getUri() + "\";\n" +
+                        VocabularyILCD.referenceShortDescription + " \"" + referenceToFlowDataSet.getShortDescription() + "\";\n";
+
+        return query;
+
+    }
+
+
 
 }

@@ -18,8 +18,6 @@ public class ReviewQueryBuilder {
         String query =
                 "PREFIX " + VocabularyILCD.ilcdProcessPrefix + "\n" +
                 "PREFIX " + VocabularyILCD.ilcdCommonGroupsPrefix + "\n" +
-                "PREFIX " + VocabularyILCD.ilcdCommonGroupsPrefix + "\n" +
-                "PREFIX " + VocabularyILCD.ilcdDatatypesPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?review a " + VocabularyILCD.review + ";\n" +

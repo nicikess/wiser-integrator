@@ -17,14 +17,13 @@ public class LCIMethodAndAllocationQueryBuilder {
 
         String query =
                 "PREFIX " + VocabularyILCD.ilcdProcessPrefix + "\n" +
-                "PREFIX " + VocabularyILCD.ilcdCommonGroupsPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?LCIMethodAndAllocation a " + VocabularyILCD.lciMethodAndAllocationType + ";\n" +
                         VocabularyILCD.lciTypeOfDataSet + " \"" + LCIMethodAndAllocation.getTypeOfDataSet() + "\";\n" +
                         VocabularyILCD.lciMethodPrinciple + " \"" + LCIMethodAndAllocation.getLCIMethodPrinciple() + "\";\n" +
                         VocabularyILCD.lciDeviationsFromLCIMethodPrinciple + " \"" + LCIMethodAndAllocation.getDeviationsFromLCIMethodPrinciple() + "\";\n" +
-                        VocabularyILCD.lciMethodApproaches + " \"" + LCIMethodAndAllocation.getLCIMethodApproaches() + "\";\n" +
+                        VocabularyILCD.lciMethodApproaches + " \"" + LCIMethodAndAllocation.getLCIMethodApproaches().get(0) + "\";\n" +
                         VocabularyILCD.lciModellingConstants + " \"" + LCIMethodAndAllocation.getModellingConstants() + "\";\n" +
                         "} where {" + "\n" +
                         "BIND(IRI(" + VocabularyILCD.lciIRI + activityIdILCD + "') AS ?LCIMethodAndAllocation)" + "\n" +

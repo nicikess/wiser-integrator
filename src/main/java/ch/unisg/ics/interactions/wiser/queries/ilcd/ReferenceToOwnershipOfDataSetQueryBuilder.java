@@ -16,7 +16,6 @@ public class ReferenceToOwnershipOfDataSetQueryBuilder {
     public String createReferenceToOwnershipOfDataSetInsertionQuery() {
 
         String query =
-                "PREFIX " + VocabularyILCD.ilcdProcessPrefix + "\n" +
                 "PREFIX " + VocabularyILCD.ilcdCommonGroupsPrefix + "\n" +
                 "PREFIX " + VocabularyILCD.ilcdDatatypesPrefix + "\n" +
                         "" + "\n" +

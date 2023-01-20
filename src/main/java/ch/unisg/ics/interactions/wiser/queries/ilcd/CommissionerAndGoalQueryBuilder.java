@@ -16,12 +16,11 @@ public class CommissionerAndGoalQueryBuilder {
     public String createCommissionerAndGoalInsertionQuery() {
 
         String query =
-                "PREFIX " + VocabularyILCD.ilcdProcessPrefix + "\n" +
                 "PREFIX " + VocabularyILCD.ilcdCommonGroupsPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?commissionerAndGoal a " + VocabularyILCD.commissionerAndGoalType + ";\n" +
-                        VocabularyILCD.intendedApplications + " " + commissionerAndGoal.getIntendedApplications() + ";\n" +
+                        VocabularyILCD.intendedApplications + " \"" + commissionerAndGoal.getIntendedApplications() + "\";\n" +
                         "} where {" + "\n" +
                         "BIND(IRI(" + VocabularyILCD.datasetCommissionerAndGoalIRI + activityIdILCD + "') AS ?commissionerAndGoal)" + "\n" +
                         "}";

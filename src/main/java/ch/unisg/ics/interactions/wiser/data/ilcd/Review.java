@@ -38,7 +38,7 @@ public class Review {
     }
 
     public String getReviewDetails() {
-        return reviewDetails;
+        return reviewDetails.replaceAll("\n", " ");
     }
 
     public List<ReferenceToNameOfReviewerAndInstitution> getReferenceToNameOfReviewerAndInstitution() {

@@ -17,7 +17,6 @@ public class DataEntryByQueryBuilder {
 
         String query =
                 "PREFIX " + VocabularyILCD.ilcdProcessPrefix + "\n" +
-                "PREFIX " + VocabularyILCD.ilcdDatatypesPrefix + "\n" +
                 "PREFIX " + VocabularyILCD.ilcdCommonGroupsPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +

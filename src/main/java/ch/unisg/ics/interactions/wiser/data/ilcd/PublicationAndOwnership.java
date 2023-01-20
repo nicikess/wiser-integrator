@@ -26,12 +26,13 @@ public class PublicationAndOwnership {
 
     ReferenceToOwnershipOfDataSet referenceToOwnershipOfDataSet;
 
+    ReferenceToUnchangedRepublication referenceToUnchangedRepublication;
+
     String copyright;
 
     String licenseType;
 
     String accessRestrictions;
-
 
     public String getDateOfLastRevision() {
         return dateOfLastRevision;
@@ -57,6 +58,10 @@ public class PublicationAndOwnership {
         return referenceToOwnershipOfDataSet;
     }
 
+    public ReferenceToUnchangedRepublication getReferenceToUnchangedRepublication() {
+        return referenceToUnchangedRepublication;
+    }
+
     public String getCopyright() {
         return copyright;
     }
@@ -66,6 +71,6 @@ public class PublicationAndOwnership {
     }
 
     public String getAccessRestrictions() {
-        return accessRestrictions;
+        return accessRestrictions.replaceAll("\n", " ");
     }
 }

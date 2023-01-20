@@ -7,11 +7,11 @@ import ch.unisg.ics.interactions.wiser.data.ilcd.ProcessDataSet;
 import ch.unisg.ics.interactions.wiser.data.ilcd.ReferenceToDataSource;
 import ch.unisg.ics.interactions.wiser.filter.XMLReaderWithoutNamespace;
 import ch.unisg.ics.interactions.wiser.queries.ecoSpold.*;
-import ch.unisg.ics.interactions.wiser.queries.ecoSpold.DataEntryByQueryBuilder;
-import ch.unisg.ics.interactions.wiser.queries.ecoSpold.GeographyQueryBuilder;
-import ch.unisg.ics.interactions.wiser.queries.ecoSpold.ReviewQueryBuilder;
-import ch.unisg.ics.interactions.wiser.queries.ecoSpold.TechnologyQueryBuilder;
 import ch.unisg.ics.interactions.wiser.queries.ilcd.*;
+import ch.unisg.ics.interactions.wiser.queries.ilcd.DataEntryByQueryBuilder;
+import ch.unisg.ics.interactions.wiser.queries.ilcd.GeographyQueryBuilder;
+import ch.unisg.ics.interactions.wiser.queries.ilcd.ReviewQueryBuilder;
+import ch.unisg.ics.interactions.wiser.queries.ilcd.TechnologyQueryBuilder;
 import ch.unisg.ics.interactions.wiser.tools.GraphDBInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,7 +41,8 @@ public class WiserIntegrator {
         EcoSpold ecoSpold = integrator.unmarshalEcoSpold(EcoSpoldTestFileName);
         ProcessDataSet ilcd = integrator.unmarshalILCD(ILCDTestFileName);
 
-        String activity = new UncertaintyQueryBuilder(ecoSpold.getActivityDataset().getFlowData().getIntermediateExchange().get(0).getProductionVolumeUncertainty(), "100").createProductionVolumeUncertaintyInsertionQuery();
+        String activity = new TimeQueryBuilder(ilcd.getProcessInformation().getTime(), "100").createTimeInsertionQuery();
+
         System.out.println(activity);
 
         //Link EcoSpold

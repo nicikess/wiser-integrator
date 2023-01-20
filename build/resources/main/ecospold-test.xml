@@ -2,7 +2,7 @@
 <ecoSpold xmlns="http://www.EcoInvent.org/EcoSpold02" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.EcoInvent.org/EcoSpold02 ../../schemas/datasets/EcoSpold02.xsd http://www.EcoInvent.org/UsedUserMasterData ../../schemas/datasets/EcoSpold02UserMasterData.xsd">
     <activityDataset>
         <activityDescription>
-            <activity specialActivityType="0" id="9d3d1721-a5a6-4e5e-a11b-4a62847bdf5Test" activityNameId="a2dfaf7c-aca3-4fe2-a1b8-a412f208fc92" inheritanceDepth="0" type="1" energyValues="0">
+            <activity specialActivityType="0" id="9d3d1721-a5a6-4e5e-a11b-4a62847bdf5" activityNameId="a2dfaf7c-aca3-4fe2-a1b8-a412f208fc92" inheritanceDepth="0" type="1" energyValues="0">
                 <activityName xml:lang="en">aluminium oxide production</activityName>
                 <synonym xml:lang="en">Corundum</synonym>
                 <synonym xml:lang="en">alumina</synonym>

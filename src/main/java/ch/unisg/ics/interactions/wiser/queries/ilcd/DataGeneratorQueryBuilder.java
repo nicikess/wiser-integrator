@@ -18,8 +18,6 @@ public class DataGeneratorQueryBuilder {
 
         String query =
                 "PREFIX " + VocabularyILCD.ilcdProcessPrefix + "\n" +
-                "PREFIX " + VocabularyILCD.ilcdCommonGroupsPrefix + "\n" +
-                "PREFIX " + VocabularyILCD.ilcdCommonGroupsPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?dataGenerator a " + VocabularyILCD.dataGenerator + ";\n" +

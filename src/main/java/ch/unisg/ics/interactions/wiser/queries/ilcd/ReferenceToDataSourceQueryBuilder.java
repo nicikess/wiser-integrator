@@ -16,7 +16,6 @@ public class ReferenceToDataSourceQueryBuilder {
     public String createReferenceToDataSourceInsertionQuery() {
 
         String query =
-                "PREFIX " + VocabularyILCD.ilcdProcessPrefix + "\n" +
                 "PREFIX " + VocabularyILCD.ilcdCommonGroupsPrefix + "\n" +
                 "PREFIX " + VocabularyILCD.ilcdDatatypesPrefix + "\n" +
                         "" + "\n" +

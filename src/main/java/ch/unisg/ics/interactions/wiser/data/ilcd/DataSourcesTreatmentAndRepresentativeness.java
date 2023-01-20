@@ -33,7 +33,7 @@ public class DataSourcesTreatmentAndRepresentativeness {
     String dataTreatmentAndExtrapolationsPrinciples;
 
     public String getDataCutOffAndCompletenessPrinciples() {
-        return dataCutOffAndCompletenessPrinciples;
+        return dataCutOffAndCompletenessPrinciples.replaceAll("\n", " ");
     }
 
     public String getDeviationsFromCutOffAndCompletenessPrinciples() {
@@ -41,7 +41,7 @@ public class DataSourcesTreatmentAndRepresentativeness {
     }
 
     public String getDataSelectionAndCombinationPrinciples() {
-        return dataSelectionAndCombinationPrinciples;
+        return dataSelectionAndCombinationPrinciples.replaceAll("\n", " ");
     }
 
     public String getDeviationsFromSelectionAndCombinationPrinciples() {
@@ -65,7 +65,7 @@ public class DataSourcesTreatmentAndRepresentativeness {
     }
 
     public String getDataTreatmentAndExtrapolationsPrinciples() {
-        return dataTreatmentAndExtrapolationsPrinciples;
+        return dataTreatmentAndExtrapolationsPrinciples.replaceAll("\n", " ");
     }
 
 }

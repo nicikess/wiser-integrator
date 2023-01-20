@@ -1,14 +1,15 @@
 package ch.unisg.ics.interactions.wiser.queries.ilcd;
 
 import ch.unisg.ics.interactions.wiser.data.ilcd.ReferenceToDataSource;
+import ch.unisg.ics.interactions.wiser.data.ilcd.ReferenceToNameOfReviewerAndInstitution;
 import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 
 public class ReferenceToNameOfReviewerAndInstitutionQueryBuilder {
 
-    private ReferenceToDataSource referenceToNameOfReviewerAndInstitution;
+    private ReferenceToNameOfReviewerAndInstitution referenceToNameOfReviewerAndInstitution;
     private String activityIdILCD;
 
-    public ReferenceToNameOfReviewerAndInstitutionQueryBuilder(ReferenceToDataSource referenceToNameOfReviewerAndInstitution, String activityIdILCD) {
+    public ReferenceToNameOfReviewerAndInstitutionQueryBuilder(ReferenceToNameOfReviewerAndInstitution referenceToNameOfReviewerAndInstitution, String activityIdILCD) {
         this.referenceToNameOfReviewerAndInstitution = referenceToNameOfReviewerAndInstitution;
         this.activityIdILCD = activityIdILCD;
     }
