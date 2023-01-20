@@ -20,7 +20,7 @@ public class RepresentativenessQueryBuilder {
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?representativeness a " + VocabularyEcoSpold.representativeness + ";\n" +
-                        VocabularyEcoSpold.systemModelId + " " + representativeness.getSystemModelId() + ";\n" +
+                        VocabularyEcoSpold.systemModelId + " \"" + representativeness.getSystemModelId() + "\";\n" +
                         VocabularyEcoSpold.systemModelName + " \"" + representativeness.getSystemModelName() + "\";\n" +
                         VocabularyEcoSpold.samplingProcedure + " \"" + representativeness.getSamplingProcedure() + "\";\n" +
                         VocabularyEcoSpold.extrapolations + " \"" + representativeness.getExtrapolations() + "\";\n" +

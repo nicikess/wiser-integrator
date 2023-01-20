@@ -16,15 +16,13 @@ public class GeographyQueryBuilder {
     public String createGeographyInsertionQuery() {
 
         String query =
-                "PREFIX " + VocabularyEcoSpold.ecoSpoldTypesPrefix + "\n" +
-                "PREFIX " + VocabularyEcoSpold.bridgingOntologyPrefix + "\n" +
-                "PREFIX " + VocabularyEcoSpold.ecoSpoldSourcePrefix + "\n" +
+                "PREFIX " + VocabularyEcoSpold.ecoSpoldMetaInformationPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?geography a " + VocabularyEcoSpold.geography + ";\n" +
-                        VocabularyEcoSpold.geographyId + " " + geography.getGeographyId() + ";\n" +
+                        VocabularyEcoSpold.geographyId + " \"" + geography.getGeographyId() + "\";\n" +
                         VocabularyEcoSpold.geographyShortName + " \"" + geography.getShortname() + "\";\n" +
-                        VocabularyEcoSpold.geographyComment + " \"" + geography.getComment() + "\";\n" +
+                        VocabularyEcoSpold.geographyComment + " \"" + geography.getComment().get(0).getText().get(0) + "\";\n" +
                         "} where {" + "\n" +
                         "BIND(IRI(" + VocabularyEcoSpold.geographyIRI + activityIdEcoSpold + "') AS ?geography)" + "\n" +
                         "}";

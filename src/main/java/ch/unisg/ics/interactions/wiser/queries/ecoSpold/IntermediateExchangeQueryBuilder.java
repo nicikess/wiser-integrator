@@ -19,11 +19,10 @@ public class IntermediateExchangeQueryBuilder {
         String query =
                 "PREFIX " + VocabularyEcoSpold.ecoSpoldMetaInformationPrefix + "\n" +
                 "PREFIX " + VocabularyEcoSpold.ecoSpoldFlowdataPrefix + "\n" +
-                "PREFIX " + VocabularyEcoSpold.ecoSpoldDataTypesPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?intermediateExchange a " + VocabularyEcoSpold.intermediateExchange + ";\n" +
-                        VocabularyEcoSpold.exchangeId + " " + intermediateExchange.getId() + ";\n" +
+                        VocabularyEcoSpold.exchangeId + " \"" + intermediateExchange.getId() + "\";\n" +
                         VocabularyEcoSpold.exchangeUnitID + " \"" + intermediateExchange.getUnitId() + "\";\n" +
                         VocabularyEcoSpold.exchangeVariableName + " \"" + intermediateExchange.getVariableName() + "\";\n" +
                         VocabularyEcoSpold.exchangeCasNumber + " \"" + intermediateExchange.getCasNumber() + "\";\n" +

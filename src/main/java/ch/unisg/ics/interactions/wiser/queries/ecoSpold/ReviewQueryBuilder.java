@@ -17,15 +17,15 @@ public class ReviewQueryBuilder {
 
         String query =
                 "PREFIX " + VocabularyEcoSpold.ecoSpoldTypesPrefix + "\n" +
-                "PREFIX " + VocabularyEcoSpold.bridgingOntologyPrefix + "\n" +
                 "PREFIX " + VocabularyEcoSpold.ecoSpoldSourcePrefix + "\n" +
+                "PREFIX " + VocabularyEcoSpold.ecoSpoldMetaInformationPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?review a " + VocabularyEcoSpold.review + ";\n" +
-                        VocabularyEcoSpold.majorReleaseReview + " \"" + review.getReviewedMajorRelease() + ";\n" +
-                        VocabularyEcoSpold.minorReleaseReview + " \"" + review.getReviewedMinorRelease() + "\";\n" +
-                        VocabularyEcoSpold.majorRevisionReview + " \"" + review.getReviewedMajorRevision() + "\";\n" +
-                        VocabularyEcoSpold.minorRevisionReview + " \"" + review.getReviewedMinorRevision() + "\";\n" +
+                        VocabularyEcoSpold.majorReleaseReview + " " + review.getReviewedMajorRelease() + ";\n" +
+                        VocabularyEcoSpold.minorReleaseReview + " " + review.getReviewedMinorRelease() + ";\n" +
+                        VocabularyEcoSpold.majorRevisionReview + " " + review.getReviewedMajorRevision() + ";\n" +
+                        VocabularyEcoSpold.minorRevisionReview + " " + review.getReviewedMinorRevision() + ";\n" +
                         VocabularyEcoSpold.reviewerId + " \"" + review.getReviewerId() + "\";\n" +
                         VocabularyEcoSpold.reviewerName + " \"" + review.getReviewerName() + "\";\n" +
                         VocabularyEcoSpold.reviewerEmail + " \"" + review.getReviewerEmail() + "\";\n" +

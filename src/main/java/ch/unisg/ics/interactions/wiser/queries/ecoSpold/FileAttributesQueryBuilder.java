@@ -22,10 +22,10 @@ public class FileAttributesQueryBuilder {
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?fileAttributes a " + VocabularyEcoSpold.fileAttributes + ";\n" +
-                        VocabularyEcoSpold.majorRelease + " \"" + fileAttributes.getMajorRelease() + "\";\n" +
-                        VocabularyEcoSpold.minorRelease + " \"" + fileAttributes.getMinorRelease() + "\";\n" +
-                        VocabularyEcoSpold.majorRevision + " \"" + fileAttributes.getMajorRevision() + "\";\n" +
-                        VocabularyEcoSpold.minorRevision + " \"" + fileAttributes.getMinorRevision() + "\";\n" +
+                        VocabularyEcoSpold.majorRelease + " " + fileAttributes.getMajorRelease() + ";\n" +
+                        VocabularyEcoSpold.minorRelease + " " + fileAttributes.getMinorRelease() + ";\n" +
+                        VocabularyEcoSpold.majorRevision + " " + fileAttributes.getMajorRevision() + ";\n" +
+                        VocabularyEcoSpold.minorRevision + " " + fileAttributes.getMinorRevision() + ";\n" +
                         VocabularyEcoSpold.internalSchemaVersion + " \"" + fileAttributes.getInternalSchemaVersion() + "\";\n" +
                         VocabularyEcoSpold.defaultLanguage + " \"" + fileAttributes.getDefaultLanguage() + "\";\n" +
                         VocabularyEcoSpold.creationTimestamp + " \"" + fileAttributes.getCreationTimestamp() + "\";\n" +

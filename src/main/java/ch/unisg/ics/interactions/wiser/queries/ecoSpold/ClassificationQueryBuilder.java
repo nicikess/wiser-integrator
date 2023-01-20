@@ -17,11 +17,10 @@ public class ClassificationQueryBuilder {
 
         String query =
                 "PREFIX " + VocabularyEcoSpold.ecoSpoldTypesPrefix + "\n" +
-                "PREFIX " + VocabularyEcoSpold.bridgingOntologyPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?classification a " + VocabularyEcoSpold.classification + ";\n" +
-                        VocabularyEcoSpold.classificationId + " " + classification.getId() + ";\n" +
+                        VocabularyEcoSpold.classificationId + " \"" + classification.getId() + "\";\n" +
                         VocabularyEcoSpold.classificationSystem + " \"" + classification.getclassificationSystem() + "\";\n" +
                         VocabularyEcoSpold.classificationValue + " \"" + classification.getclassificationValue() + "\";\n" +
                         "} where {" + "\n" +

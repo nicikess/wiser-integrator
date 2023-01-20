@@ -20,8 +20,8 @@ public class DataEntryByQueryBuilder {
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?dataEntryBy a " + VocabularyEcoSpold.dataEntryBy + ";\n" +
-                        VocabularyEcoSpold.dataEntryByPersonId + " " + dataEntryBy.getPersonId() + ";\n" +
-                        VocabularyEcoSpold.dataEntryByIsActiveAuthor+ " \"" + dataEntryBy.getIsActiveAuthor() + "\";\n" +
+                        VocabularyEcoSpold.dataEntryByPersonId + " \"" + dataEntryBy.getPersonId() + "\";\n" +
+                        VocabularyEcoSpold.dataEntryByIsActiveAuthor+ " " + dataEntryBy.getIsActiveAuthor() + ";\n" +
                         VocabularyEcoSpold.dataEntryByPersonName + " \"" + dataEntryBy.getPersonName() + "\";\n" +
                         VocabularyEcoSpold.dataEntryByPersonEmail + " \"" + dataEntryBy.getPersonEmail() + "\";\n" +
                         "} where {" + "\n" +

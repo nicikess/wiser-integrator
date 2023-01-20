@@ -21,15 +21,15 @@ public class UncertaintyQueryBuilder {
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?productionVolumeUncertainty a " + VocabularyEcoSpold.uncertainty + ";\n" +
-                        VocabularyEcoSpold.meanValue + " \"" + productionVolumeUncertainty.getLognormal().getMeanValue() + "\";\n" +
-                        VocabularyEcoSpold.mu + " \"" + productionVolumeUncertainty.getLognormal().getMu() + "\";\n" +
-                        VocabularyEcoSpold.variance + " \"" + productionVolumeUncertainty.getLognormal().getVariance()+ "\";\n" +
-                        VocabularyEcoSpold.varianceWithPedigreeUncertainty + " \"" + productionVolumeUncertainty.getLognormal().getVarianceWithPedigreeUncertainty() + "\";\n" +
-                        VocabularyEcoSpold.reliability + " \"" + productionVolumeUncertainty.getPedigreeMatrix().getReliability() + "\";\n" +
-                        VocabularyEcoSpold.completeness + " \"" + productionVolumeUncertainty.getPedigreeMatrix().getCompleteness() + "\";\n" +
-                        VocabularyEcoSpold.temporalCorrelation + " \"" + productionVolumeUncertainty.getPedigreeMatrix().getTemporalCorrelation() + "\";\n" +
-                        VocabularyEcoSpold.geographicalCorrelation + " \"" + productionVolumeUncertainty.getPedigreeMatrix().getGeographicalCorrelation() + "\";\n" +
-                        VocabularyEcoSpold.furtherTechnologyCorrelation + " \"" + productionVolumeUncertainty.getPedigreeMatrix().getFurtherTechnologyCorrelation() + "\";\n" +
+                        VocabularyEcoSpold.meanValue + " " + productionVolumeUncertainty.getLognormal().getMeanValue() + ";\n" +
+                        VocabularyEcoSpold.mu + " " + productionVolumeUncertainty.getLognormal().getMu() + ";\n" +
+                        VocabularyEcoSpold.variance + " " + productionVolumeUncertainty.getLognormal().getVariance()+ ";\n" +
+                        VocabularyEcoSpold.varianceWithPedigreeUncertainty + " " + productionVolumeUncertainty.getLognormal().getVarianceWithPedigreeUncertainty() + ";\n" +
+                        VocabularyEcoSpold.reliability + " " + productionVolumeUncertainty.getPedigreeMatrix().getReliability() + ";\n" +
+                        VocabularyEcoSpold.completeness + " " + productionVolumeUncertainty.getPedigreeMatrix().getCompleteness() + ";\n" +
+                        VocabularyEcoSpold.temporalCorrelation + " " + productionVolumeUncertainty.getPedigreeMatrix().getTemporalCorrelation() + ";\n" +
+                        VocabularyEcoSpold.geographicalCorrelation + " " + productionVolumeUncertainty.getPedigreeMatrix().getGeographicalCorrelation() + ";\n" +
+                        VocabularyEcoSpold.furtherTechnologyCorrelation + " " + productionVolumeUncertainty.getPedigreeMatrix().getFurtherTechnologyCorrelation() + ";\n" +
                         VocabularyEcoSpold.uncertaintyComment + " \"" + productionVolumeUncertainty.getComment() + "\";\n" +
                         "} where {" + "\n" +
                         "BIND(IRI(" + VocabularyEcoSpold.uncertaintyIRI + activityIdEcoSpold + "') AS ?productionVolumeUncertainty)" + "\n" +

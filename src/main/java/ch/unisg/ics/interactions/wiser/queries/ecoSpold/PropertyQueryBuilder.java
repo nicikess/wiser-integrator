@@ -22,13 +22,13 @@ public class PropertyQueryBuilder {
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?property a " + VocabularyEcoSpold.property + ";\n" +
-                        VocabularyEcoSpold.propertyId + " " + property.getPropertyId() + ";\n" +
+                        VocabularyEcoSpold.propertyId + " \"" + property.getPropertyId() + "\";\n" +
                         VocabularyEcoSpold.propertyAmount + " " + property.getAmount() + ";\n" +
                         VocabularyEcoSpold.propertyIsDefiningValue + " " + property.getIsDefiningValue() + ";\n" +
-                        VocabularyEcoSpold.propertyUnitId + " " + property.getUnitId() + ";\n" +
-                        VocabularyEcoSpold.propertyName + " " + property.getName() + ";\n" +
-                        VocabularyEcoSpold.propertyUnitName + " " + property.getUnitName() + ";\n" +
-                        VocabularyEcoSpold.propertyComment + " " + property.getComment() + ";\n" +
+                        VocabularyEcoSpold.propertyUnitId + " \"" + property.getUnitId() + "\";\n" +
+                        VocabularyEcoSpold.propertyName + " \"" + property.getName() + "\";\n" +
+                        VocabularyEcoSpold.propertyUnitName + " \"" + property.getUnitName() + "\";\n" +
+                        VocabularyEcoSpold.propertyComment + " \"" + property.getComment() + "\";\n" +
                         "} where {" + "\n" +
                         "BIND(IRI(" + VocabularyEcoSpold.propertyIRI + activityIdEcoSpold + "') AS ?property)" + "\n" +
                         "}";

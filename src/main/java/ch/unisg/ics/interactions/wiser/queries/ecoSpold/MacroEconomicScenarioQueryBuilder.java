@@ -21,7 +21,7 @@ public class MacroEconomicScenarioQueryBuilder {
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?macroEconomicScenario a " + VocabularyEcoSpold.macroEconomicScenario + ";\n" +
-                        VocabularyEcoSpold.macroEconomicScenarioId + " " + macroEconomicScenario.getMacroEconomicScenarioId() + ";\n" +
+                        VocabularyEcoSpold.macroEconomicScenarioId + " \"" + macroEconomicScenario.getMacroEconomicScenarioId() + "\";\n" +
                         VocabularyEcoSpold.macroEconomicScenarioName + " \"" + macroEconomicScenario.getName() + "\";\n" +
                         "} where {" + "\n" +
                         "BIND(IRI(" + VocabularyEcoSpold.macroEconomicScenarioIRI + activityIdEcoSpold + "') AS ?macroEconomicScenario)" + "\n" +

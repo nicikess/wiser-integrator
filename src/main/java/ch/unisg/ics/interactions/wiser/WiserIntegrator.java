@@ -1,10 +1,16 @@
 package ch.unisg.ics.interactions.wiser;
 
+import ch.unisg.ics.interactions.wiser.data.ecoSpold.Activity;
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.EcoSpold;
+import ch.unisg.ics.interactions.wiser.data.ecoSpold.FileAttributes;
 import ch.unisg.ics.interactions.wiser.data.ilcd.ProcessDataSet;
 import ch.unisg.ics.interactions.wiser.data.ilcd.ReferenceToDataSource;
 import ch.unisg.ics.interactions.wiser.filter.XMLReaderWithoutNamespace;
-import ch.unisg.ics.interactions.wiser.queries.ecoSpold.ActivityQueryBuilder;
+import ch.unisg.ics.interactions.wiser.queries.ecoSpold.*;
+import ch.unisg.ics.interactions.wiser.queries.ecoSpold.DataEntryByQueryBuilder;
+import ch.unisg.ics.interactions.wiser.queries.ecoSpold.GeographyQueryBuilder;
+import ch.unisg.ics.interactions.wiser.queries.ecoSpold.ReviewQueryBuilder;
+import ch.unisg.ics.interactions.wiser.queries.ecoSpold.TechnologyQueryBuilder;
 import ch.unisg.ics.interactions.wiser.queries.ilcd.*;
 import ch.unisg.ics.interactions.wiser.tools.GraphDBInterface;
 import org.slf4j.Logger;
@@ -35,19 +41,11 @@ public class WiserIntegrator {
         EcoSpold ecoSpold = integrator.unmarshalEcoSpold(EcoSpoldTestFileName);
         ProcessDataSet ilcd = integrator.unmarshalILCD(ILCDTestFileName);
 
-        ReferenceToDataSource referenceToDataSource = ilcd.getModellingAndValidation().getDataSourcesTreatmentAndRepresentativeness().getReferenceToDataSources().get(0);
-
-        System.out.println(referenceToDataSource.getUri());
-
-        //new InsertData(ecoSpold, ilcd);
+        String activity = new UncertaintyQueryBuilder(ecoSpold.getActivityDataset().getFlowData().getIntermediateExchange().get(0).getProductionVolumeUncertainty(), "100").createProductionVolumeUncertaintyInsertionQuery();
+        System.out.println(activity);
 
         //Link EcoSpold
         //Link ILCD
-
-        //GraphDBInterface graphDBInterface = new GraphDBInterface();
-
-
-        //String query = graphDBInterface.getQuery();
 
         try {
             //graphDBInterface.queryEndpoint(query);

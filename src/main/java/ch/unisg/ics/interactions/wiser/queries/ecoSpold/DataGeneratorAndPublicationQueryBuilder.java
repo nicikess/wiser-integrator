@@ -23,13 +23,13 @@ public class DataGeneratorAndPublicationQueryBuilder {
                         VocabularyEcoSpold.dataGeneratorAndPublicationPersonId + " \"" + dataGeneratorAndPublication.getPersonId() + "\";\n" +
                         VocabularyEcoSpold.dataGeneratorAndPublicationPersonName + " \"" + dataGeneratorAndPublication.getPersonName() + "\";\n" +
                         VocabularyEcoSpold.dataGeneratorAndPublicationPersonEmail + " \"" + dataGeneratorAndPublication.getPersonEmail() + "\";\n" +
-                        VocabularyEcoSpold.dataGeneratorAndPublicationDataPublishedIn + " \"" + dataGeneratorAndPublication.getDataPublishedIn()+ "\";\n" +
+                        VocabularyEcoSpold.dataGeneratorAndPublicationDataPublishedIn + " " + dataGeneratorAndPublication.getDataPublishedIn()+ ";\n" +
                         VocabularyEcoSpold.dataGeneratorAndPublicationPublishedSourceId + " \"" + dataGeneratorAndPublication.getPublishedSourceId() + "\";\n" +
-                        VocabularyEcoSpold.dataGeneratorAndPublicationPublishedSourceYear + " \"" + dataGeneratorAndPublication.getPublishedSourceYear() + "\";\n" +
+                        VocabularyEcoSpold.dataGeneratorAndPublicationPublishedSourceYear + " " + dataGeneratorAndPublication.getPublishedSourceYear() + ";\n" +
                         VocabularyEcoSpold.dataGeneratorAndPublicationPublishedSourceFirstAuthor + " \"" + dataGeneratorAndPublication.getPublishedSourceFirstAuthor() + "\";\n" +
-                        VocabularyEcoSpold.dataGeneratorAndPublicationIsCopyrightProtected + " \"" + dataGeneratorAndPublication.getIsCopyrightProtected() + "\";\n" +
-                        VocabularyEcoSpold.dataGeneratorAndPublicationAccessRestrictedTo + " \"" + dataGeneratorAndPublication.getAccessRestrictedTo() + "\";\n" +
-                        VocabularyEcoSpold.dataGeneratorAndPublicationCompanyIdOverwrittenByChild + " \"" + dataGeneratorAndPublication.getCompanyIdOverwrittenByChild() + "\";\n" +
+                        VocabularyEcoSpold.dataGeneratorAndPublicationIsCopyrightProtected + " " + dataGeneratorAndPublication.getIsCopyrightProtected() + ";\n" +
+                        VocabularyEcoSpold.dataGeneratorAndPublicationAccessRestrictedTo + " " + dataGeneratorAndPublication.getAccessRestrictedTo() + ";\n" +
+                        VocabularyEcoSpold.dataGeneratorAndPublicationCompanyIdOverwrittenByChild + " " + dataGeneratorAndPublication.getCompanyIdOverwrittenByChild() + ";\n" +
                         "} where {" + "\n" +
                         "BIND(IRI(" + VocabularyEcoSpold.dataGeneratorAndPublicationIRI + activityIdEcoSpold + "') AS ?dataGeneratorAndPublication)" + "\n" +
                         "}";
