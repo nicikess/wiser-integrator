@@ -7,12 +7,12 @@ public class ClassificationQueryBuilder {
 
     private Classification classification;
     private String activityIdEcoSpold;
-    private String idendifier;
+    private String identifier;
 
     public ClassificationQueryBuilder(Classification classification, String activityIdEcoSpold) {
         this.classification = classification;
         this.activityIdEcoSpold = activityIdEcoSpold;
-        this.idendifier = VocabularyEcoSpold.classificationIRI + activityIdEcoSpold;
+        this.identifier = VocabularyEcoSpold.classificationIRI + activityIdEcoSpold + "/"+ classification.getId();
     }
 
     public String createClassificationInsertionQuery() {
@@ -26,15 +26,15 @@ public class ClassificationQueryBuilder {
                         VocabularyEcoSpold.classificationSystem + " \"" + classification.getclassificationSystem() + "\";\n" +
                         VocabularyEcoSpold.classificationValue + " \"" + classification.getclassificationValue() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI('" + idendifier + "') AS ?classification)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?classification)" + "\n" +
                         "}";
 
         return query;
 
     }
 
-    public String getIdendifier() {
-        return idendifier;
+    public String getIdentifier() {
+        return identifier;
     }
 
 

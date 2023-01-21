@@ -9,10 +9,12 @@ public class DataSourcesTreatmentAndRepresentativenessQueryBuilder {
 
     private DataSourcesTreatmentAndRepresentativeness dataSourcesTreatmentAndRepresentativeness;
     private String activityIdILCD;
+    private String identifier;
 
     public DataSourcesTreatmentAndRepresentativenessQueryBuilder(DataSourcesTreatmentAndRepresentativeness dataSourcesTreatmentAndRepresentativeness, String activityIdILCD) {
         this.dataSourcesTreatmentAndRepresentativeness = dataSourcesTreatmentAndRepresentativeness;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.dataSourcesTreatmentAndRepresentativenessIRI + activityIdILCD;
     }
 
     public String createDataSourcesTreatmentAndRepresentativenessInsertionQuery() {
@@ -28,11 +30,15 @@ public class DataSourcesTreatmentAndRepresentativenessQueryBuilder {
                         VocabularyILCD.deviationsFromSelectionAndCombinationPrinciples + " \"" + dataSourcesTreatmentAndRepresentativeness.getDeviationsFromSelectionAndCombinationPrinciples() + "\";\n" +
                         VocabularyILCD.dataTreatmentAndExtrapolationsPrinciples + " \"" + dataSourcesTreatmentAndRepresentativeness.getDataTreatmentAndExtrapolationsPrinciples() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.dataSourcesTreatmentAndRepresentativenessIRI + activityIdILCD + "') AS ?dataSourcesTreatmentAndRepresentativeness)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?dataSourcesTreatmentAndRepresentativeness)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 }

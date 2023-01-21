@@ -7,10 +7,12 @@ public class ReferenceToUnchangedRepublicationQueryBuilder {
 
     private ReferenceToUnchangedRepublication referenceToUnchangedRepublication;
     private String activityIdILCD;
+    private String identifier;
 
     public ReferenceToUnchangedRepublicationQueryBuilder(ReferenceToUnchangedRepublication referenceToUnchangedRepublication, String activityIdILCD) {
         this.referenceToUnchangedRepublication = referenceToUnchangedRepublication;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.referenceToUnchangedRepublicationIRI + activityIdILCD;
     }
 
     public String createReferenceToUnchangedRepublicationInsertionQuery() {
@@ -21,16 +23,21 @@ public class ReferenceToUnchangedRepublicationQueryBuilder {
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?referenceToUnchangedRepublication a " + VocabularyILCD.reference + ";\n" +
+                        VocabularyILCD.refObject + " \"" + referenceToUnchangedRepublication.getRefObjectId() + "\";\n" +
                         VocabularyILCD.referenceType + " \"" + referenceToUnchangedRepublication.getType() + "\";\n" +
                         VocabularyILCD.referenceVersion + " \"" + referenceToUnchangedRepublication.getVersion() + "\";\n" +
                         VocabularyILCD.referenceURI + " \"" + referenceToUnchangedRepublication.getUri() + "\";\n" +
                         VocabularyILCD.referenceShortDescription + " \"" + referenceToUnchangedRepublication.getShortDescription() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.referenceToUnchangedRepublicationIRI + activityIdILCD + "') AS ?referenceToUnchangedRepublication)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?referenceToUnchangedRepublication)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 }

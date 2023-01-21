@@ -7,10 +7,12 @@ public class ReferenceToFlowDataSetQueryBuilder {
 
     private ReferenceToFlowDataSet referenceToFlowDataSet;
     private String activityIdILCD;
+    private String identifier;
 
     public ReferenceToFlowDataSetQueryBuilder(ReferenceToFlowDataSet referenceToFlowDataSet, String activityIdILCD) {
         this.referenceToFlowDataSet = referenceToFlowDataSet;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.referenceToFlowDataSetIRI + activityIdILCD;
     }
 
     public String createReferenceToFlowDataSetInsertionQuery() {
@@ -21,12 +23,13 @@ public class ReferenceToFlowDataSetQueryBuilder {
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?referenceToFlowDataSet a " + VocabularyILCD.reference + ";\n" +
+                        VocabularyILCD.refObject + " \"" + referenceToFlowDataSet.getRefObjectId() + "\";\n" +
                         VocabularyILCD.referenceType + " \"" + referenceToFlowDataSet.getType() + "\";\n" +
                         VocabularyILCD.referenceVersion + " \"" + referenceToFlowDataSet.getVersion() + "\";\n" +
                         VocabularyILCD.referenceURI + " \"" + referenceToFlowDataSet.getUri() + "\";\n" +
                         VocabularyILCD.referenceShortDescription + " \"" + referenceToFlowDataSet.getShortDescription() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.referenceToFlowDataSetIRI + activityIdILCD + "') AS ?referenceToFlowDataSet)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?referenceToFlowDataSet)" + "\n" +
                         "}";
 
         return query;
@@ -45,6 +48,8 @@ public class ReferenceToFlowDataSetQueryBuilder {
 
     }
 
-
+    public String getIdentifier() {
+        return identifier;
+    }
 
 }

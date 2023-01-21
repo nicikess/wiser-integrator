@@ -7,10 +7,12 @@ public class CommissionerAndGoalQueryBuilder {
 
     private CommissionerAndGoal commissionerAndGoal;
     private String activityIdILCD;
+    private String identifier;
 
     public CommissionerAndGoalQueryBuilder(CommissionerAndGoal commissionerAndGoal, String activityIdILCD) {
         this.commissionerAndGoal = commissionerAndGoal;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.datasetCommissionerAndGoalIRI + activityIdILCD;
     }
 
     public String createCommissionerAndGoalInsertionQuery() {
@@ -22,12 +24,14 @@ public class CommissionerAndGoalQueryBuilder {
                         "?commissionerAndGoal a " + VocabularyILCD.commissionerAndGoalType + ";\n" +
                         VocabularyILCD.intendedApplications + " \"" + commissionerAndGoal.getIntendedApplications() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.datasetCommissionerAndGoalIRI + activityIdILCD + "') AS ?commissionerAndGoal)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?commissionerAndGoal)" + "\n" +
                         "}";
 
         return query;
 
     }
 
-
+    public String getIdentifier() {
+        return identifier;
+    }
 }

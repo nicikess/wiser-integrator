@@ -7,10 +7,12 @@ public class GeographyQueryBuilder {
 
     private Geography geography;
     private String activityIdILCD;
+    private String identifier;
 
     public GeographyQueryBuilder(Geography geography, String activityIdILCD) {
         this.geography = geography;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.geographyIRI + activityIdILCD;
     }
 
     public String createGeographyInsertionQuery() {
@@ -25,11 +27,15 @@ public class GeographyQueryBuilder {
                         VocabularyILCD.geographyLatitudeAndLongitude + " \"" + geography.getLocationOfOperationSupplyOrProduction().getLatitudeAndLongitude() + "\";\n" +
                         VocabularyILCD.geographyDescriptionOfRestrictions + " \"" + geography.getLocationOfOperationSupplyOrProduction().getDescriptionOfRestrictions() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.geographyIRI + activityIdILCD + "') AS ?geography)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?geography)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 

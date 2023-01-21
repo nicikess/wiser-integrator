@@ -12,7 +12,7 @@ public class GeographyQueryBuilder {
     public GeographyQueryBuilder(Geography geography, String activityIdEcoSpold) {
         this.geography = geography;
         this.activityIdEcoSpold = activityIdEcoSpold;
-        this.identifier = VocabularyEcoSpold.fileAttributesIRI + activityIdEcoSpold;
+        this.identifier = VocabularyEcoSpold.geographyIRI + activityIdEcoSpold;
     }
 
     public String createGeographyInsertionQuery() {

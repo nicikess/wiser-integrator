@@ -7,10 +7,12 @@ public class PublicationAndOwnershipQueryBuilder {
 
     private PublicationAndOwnership publicationAndOwnership;
     private String activityIdILCD;
+    private String identifier;
 
     public PublicationAndOwnershipQueryBuilder(PublicationAndOwnership publicationAndOwnership, String activityIdILCD) {
         this.publicationAndOwnership = publicationAndOwnership;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.publicationAndOwnershipIRI + activityIdILCD;
     }
 
     public String createPublicationAndOwnershipInsertionQuery() {
@@ -26,11 +28,15 @@ public class PublicationAndOwnershipQueryBuilder {
                         VocabularyILCD.copyright + " " + publicationAndOwnership.getCopyright()+ ";\n" +
                         VocabularyILCD.accessRestrictions + " \"" + publicationAndOwnership.getAccessRestrictions() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.publicationAndOwnershipIRI + activityIdILCD + "') AS ?publicationAndOwnership)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?publicationAndOwnership)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 

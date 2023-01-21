@@ -7,10 +7,12 @@ public class DataSetInformationQueryBuilder {
 
     private DataSetInformation dataSetInformation;
     private String activityIdILCD;
+    private String identifier;
 
     public DataSetInformationQueryBuilder(DataSetInformation dataSetInformation, String activityIdILCD) {
         this.dataSetInformation = dataSetInformation;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.datasetInformationIRI + activityIdILCD;
     }
 
     public String createDataSetInformationInsertionQuery() {
@@ -27,7 +29,7 @@ public class DataSetInformationQueryBuilder {
                         addClassificationInformationToQueryString() +
                         VocabularyILCD.dataSetInformationGeneralComment + " \"" + dataSetInformation.getGeneralComment() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.datasetInformationIRI + activityIdILCD + "') AS ?dataSetInformation)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?dataSetInformation)" + "\n" +
                         "}";
 
         return query;
@@ -44,6 +46,10 @@ public class DataSetInformationQueryBuilder {
 
         return classificationInformation;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 }

@@ -7,10 +7,12 @@ public class LCIMethodAndAllocationQueryBuilder {
 
     private LCIMethodAndAllocation LCIMethodAndAllocation;
     private String activityIdILCD;
+    private String identifier;
 
     public LCIMethodAndAllocationQueryBuilder(LCIMethodAndAllocation LCIMethodAndAllocation, String activityIdILCD) {
         this.LCIMethodAndAllocation = LCIMethodAndAllocation;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.lciIRI + activityIdILCD;
     }
 
     public String createLCIMethodAndAllocationInsertionQuery() {
@@ -26,11 +28,15 @@ public class LCIMethodAndAllocationQueryBuilder {
                         VocabularyILCD.lciMethodApproaches + " \"" + LCIMethodAndAllocation.getLCIMethodApproaches().get(0) + "\";\n" +
                         VocabularyILCD.lciModellingConstants + " \"" + LCIMethodAndAllocation.getModellingConstants() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.lciIRI + activityIdILCD + "') AS ?LCIMethodAndAllocation)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?LCIMethodAndAllocation)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 

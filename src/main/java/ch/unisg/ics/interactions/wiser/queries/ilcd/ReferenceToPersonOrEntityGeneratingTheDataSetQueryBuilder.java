@@ -7,10 +7,12 @@ public class ReferenceToPersonOrEntityGeneratingTheDataSetQueryBuilder {
 
     private ReferenceToPersonOrEntityGeneratingTheDataSet referenceToPersonOrEntityGeneratingTheDataSet;
     private String activityIdILCD;
+    private String identifier;
 
     public ReferenceToPersonOrEntityGeneratingTheDataSetQueryBuilder(ReferenceToPersonOrEntityGeneratingTheDataSet referenceToPersonOrEntityGeneratingTheDataSet, String activityIdILCD) {
         this.referenceToPersonOrEntityGeneratingTheDataSet = referenceToPersonOrEntityGeneratingTheDataSet;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.referenceToPersonOrEntityGeneratingTheDataSetIRI + activityIdILCD;
     }
 
     public String createReferenceToPersonOrEntityGeneratingTheDataInsertionQuery() {
@@ -22,16 +24,21 @@ public class ReferenceToPersonOrEntityGeneratingTheDataSetQueryBuilder {
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?referenceToPersonOrEntityGeneratingTheDataSet a " + VocabularyILCD.referenceToPersonOrEntityGeneratingTheData + ";\n" +
+                        VocabularyILCD.refObject + " \"" + referenceToPersonOrEntityGeneratingTheDataSet.getRefObjectId() + "\";\n" +
                         VocabularyILCD.referenceType + " \"" + referenceToPersonOrEntityGeneratingTheDataSet.getType() + "\";\n" +
                         VocabularyILCD.referenceVersion + " \"" + referenceToPersonOrEntityGeneratingTheDataSet.getVersion() + "\";\n" +
                         VocabularyILCD.referenceURI + " \"" + referenceToPersonOrEntityGeneratingTheDataSet.getUri() + "\";\n" +
                         VocabularyILCD.referenceShortDescription + " \"" + referenceToPersonOrEntityGeneratingTheDataSet.getShortDescription() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.referenceToPersonOrEntityGeneratingTheDataSetIRI + activityIdILCD + "') AS ?referenceToPersonOrEntityGeneratingTheDataSet)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?referenceToPersonOrEntityGeneratingTheDataSet)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 }

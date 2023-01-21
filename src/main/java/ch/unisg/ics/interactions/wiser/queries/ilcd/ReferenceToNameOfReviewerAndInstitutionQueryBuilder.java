@@ -8,10 +8,12 @@ public class ReferenceToNameOfReviewerAndInstitutionQueryBuilder {
 
     private ReferenceToNameOfReviewerAndInstitution referenceToNameOfReviewerAndInstitution;
     private String activityIdILCD;
+    private String identifier;
 
     public ReferenceToNameOfReviewerAndInstitutionQueryBuilder(ReferenceToNameOfReviewerAndInstitution referenceToNameOfReviewerAndInstitution, String activityIdILCD) {
         this.referenceToNameOfReviewerAndInstitution = referenceToNameOfReviewerAndInstitution;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.referenceToNameOfReviewerAndInstitutionIRI + activityIdILCD;
     }
 
     public String createReferenceToDataSourceInsertionQuery() {
@@ -23,16 +25,21 @@ public class ReferenceToNameOfReviewerAndInstitutionQueryBuilder {
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?referenceToNameOfReviewerAndInstitution a " + VocabularyILCD.referenceToNameOfReviewerAndInstitution + ";\n" +
+                        VocabularyILCD.refObject + " \"" + referenceToNameOfReviewerAndInstitution.getRefObjectId() + "\";\n" +
                         VocabularyILCD.referenceType + " \"" + referenceToNameOfReviewerAndInstitution.getType() + "\";\n" +
                         VocabularyILCD.referenceVersion + " \"" + referenceToNameOfReviewerAndInstitution.getVersion() + "\";\n" +
                         VocabularyILCD.referenceURI + " \"" + referenceToNameOfReviewerAndInstitution.getUri() + "\";\n" +
                         VocabularyILCD.referenceShortDescription + " \"" + referenceToNameOfReviewerAndInstitution.getShortDescription() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.referenceToNameOfReviewerAndInstitutionIRI + activityIdILCD + "') AS ?referenceToNameOfReviewerAndInstitution)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?referenceToNameOfReviewerAndInstitution)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 }

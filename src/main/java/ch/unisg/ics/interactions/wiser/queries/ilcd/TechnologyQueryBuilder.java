@@ -7,10 +7,12 @@ public class TechnologyQueryBuilder {
 
     private Technology technology;
     private String activityIdIlcd;
+    private String identifier;
 
     public TechnologyQueryBuilder(Technology technology, String activityIdIlcd) {
         this.technology = technology;
         this.activityIdIlcd = activityIdIlcd;
+        this.identifier = VocabularyILCD.technologyIRI + activityIdIlcd;
     }
 
     public String createTechnologyInsertionQuery() {
@@ -23,11 +25,15 @@ public class TechnologyQueryBuilder {
                         "?technology a " + VocabularyILCD.technology + ";\n" +
                         VocabularyILCD.technologyDescriptionAndIncludedProcesses + " \"" + technology.getTechnologyDescriptionAndIncludedProcesses() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.technologyIRI + activityIdIlcd + "') AS ?technology)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?technology)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 

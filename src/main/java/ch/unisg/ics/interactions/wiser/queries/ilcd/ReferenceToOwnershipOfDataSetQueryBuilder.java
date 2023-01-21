@@ -7,10 +7,12 @@ public class ReferenceToOwnershipOfDataSetQueryBuilder {
 
     private ReferenceToOwnershipOfDataSet referenceToOwnershipOfDataSet;
     private String activityIdILCD;
+    private String identifier;
 
     public ReferenceToOwnershipOfDataSetQueryBuilder(ReferenceToOwnershipOfDataSet referenceToOwnershipOfDataSet, String activityIdILCD) {
         this.referenceToOwnershipOfDataSet = referenceToOwnershipOfDataSet;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.referenceToOwnershipOfDataSetIRI + activityIdILCD;
     }
 
     public String createReferenceToOwnershipOfDataSetInsertionQuery() {
@@ -21,16 +23,21 @@ public class ReferenceToOwnershipOfDataSetQueryBuilder {
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?referenceToOwnershipOfDataSet a " + VocabularyILCD.reference + ";\n" +
+                        VocabularyILCD.refObject + " \"" + referenceToOwnershipOfDataSet.getRefObjectId() + "\";\n" +
                         VocabularyILCD.referenceType + " \"" + referenceToOwnershipOfDataSet.getType() + "\";\n" +
                         VocabularyILCD.referenceVersion + " \"" + referenceToOwnershipOfDataSet.getVersion() + "\";\n" +
                         VocabularyILCD.referenceURI + " \"" + referenceToOwnershipOfDataSet.getUri() + "\";\n" +
                         VocabularyILCD.referenceShortDescription + " \"" + referenceToOwnershipOfDataSet.getShortDescription() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.referenceToOwnershipOfDataSetIRI + activityIdILCD + "') AS ?referenceToOwnershipOfDataSet)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?referenceToOwnershipOfDataSet)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 }

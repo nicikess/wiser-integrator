@@ -7,10 +7,12 @@ public class TimeQueryBuilder {
 
     private Time time;
     private String activityIdIlcd;
+    private String identifier;
 
     public TimeQueryBuilder(Time time, String activityIdIlcd) {
         this.time = time;
         this.activityIdIlcd = activityIdIlcd;
+        this.identifier = VocabularyILCD.timeIRI + activityIdIlcd;
     }
 
     public String createTimeInsertionQuery() {
@@ -25,11 +27,15 @@ public class TimeQueryBuilder {
                         VocabularyILCD.timeDataSetValidUntil + " " + time.getDataSetValidUntil() + ";\n" +
                         VocabularyILCD.timeRepresentativenessDescription + " \"" + time.getTimeRepresentativenessDescription() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.timeIRI + activityIdIlcd + "') AS ?time)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?time)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 

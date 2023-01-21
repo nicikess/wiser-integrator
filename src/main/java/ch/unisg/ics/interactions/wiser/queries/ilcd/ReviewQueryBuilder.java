@@ -7,10 +7,12 @@ public class ReviewQueryBuilder {
 
     private Review review;
     private String activityIdILCD;
+    private String identifier;
 
     public ReviewQueryBuilder(Review review, String activityIdILCD) {
         this.review = review;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.reviewIRI + activityIdILCD;
     }
 
     public String createReviewInsertionQuery() {
@@ -24,11 +26,15 @@ public class ReviewQueryBuilder {
                         VocabularyILCD.reviewType + " \"" + review.getType() + "\";\n" +
                         VocabularyILCD.reviewDetails + " \"" + review.getReviewDetails() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.reviewIRI + activityIdILCD + "') AS ?review)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?review)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 

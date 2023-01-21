@@ -8,10 +8,12 @@ public class DataGeneratorQueryBuilder {
 
     private DataGenerator dataGenerator;
     private String activityIdILCD;
+    private String identifier;
 
     public DataGeneratorQueryBuilder(DataGenerator dataGenerator, String activityIdILCD) {
         this.dataGenerator = dataGenerator;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.dataGeneratorIRI + activityIdILCD;
     }
 
     public String createDataGeneratorInsertionQuery() {
@@ -22,11 +24,14 @@ public class DataGeneratorQueryBuilder {
                         "insert {" + "\n" +
                         "?dataGenerator a " + VocabularyILCD.dataGenerator + ";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.dataGeneratorIRI + activityIdILCD + "') AS ?dataGenerator)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?dataGenerator)" + "\n" +
                         "}";
 
         return query;
 
     }
 
+    public String getIdentifier() {
+        return identifier;
+    }
 }

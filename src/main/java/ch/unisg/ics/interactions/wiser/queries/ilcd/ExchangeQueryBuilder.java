@@ -8,10 +8,12 @@ public class ExchangeQueryBuilder {
 
     private Exchange exchange;
     private String activityIdILCD;
+    private String identifier;
 
     public ExchangeQueryBuilder(Exchange exchange, String activityIdILCD) {
         this.exchange = exchange;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.exchangeIRI + activityIdILCD;
     }
 
     public String createExchangeInsertionQuery() {
@@ -28,7 +30,7 @@ public class ExchangeQueryBuilder {
                         VocabularyILCD.exchangeMeanAmount + " \"" + exchange.getMeanAmount() + "\";\n" +
                         VocabularyILCD.exchangeResultingAmount + " \"" + exchange.getResultingAmount() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.exchangeIRI + activityIdILCD + "') AS ?exchanges)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?exchanges)" + "\n" +
                         "}";
 
         return query;
@@ -39,6 +41,10 @@ public class ExchangeQueryBuilder {
 
         return new ReferenceToFlowDataSetQueryBuilder(exchange.getReferenceToFlowDataSet(), activityIdILCD).createReferenceToFlowDataSetInsertionWithoutPrefixQuery();
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 

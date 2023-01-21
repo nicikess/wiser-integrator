@@ -1,7 +1,8 @@
-package ch.unisg.ics.interactions.wiser.queries.ecoSpold;
+package ch.unisg.ics.interactions.wiser.queries;
 
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.Activity;
 import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
+import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 
 public class ConnectIndividualsQuery {
 
@@ -21,6 +22,8 @@ public class ConnectIndividualsQuery {
                 "PREFIX " + VocabularyEcoSpold.ecoSpoldBasePrefix + "\n" +
                 "PREFIX " + VocabularyEcoSpold.ecoSpoldActivityPrefix + "\n" +
                 "PREFIX " + VocabularyEcoSpold.ecoSpoldFlowdataPrefix + "\n" +
+                "PREFIX " + VocabularyILCD.ilcdCommonGroupsPrefix + "\n" +
+                "PREFIX " + VocabularyILCD.ilcdProcessPrefix + "\n" +
                         "" + "\n" +
                         "insert {" + "\n" +
                         "<" + identifierOne + ">" + objectProperty + "<" + identifierTwo + ">." + "\n" +

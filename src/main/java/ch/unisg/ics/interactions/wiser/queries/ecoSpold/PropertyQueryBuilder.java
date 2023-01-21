@@ -28,7 +28,7 @@ public class PropertyQueryBuilder {
                         "?property a " + VocabularyEcoSpold.property + ";\n" +
                         VocabularyEcoSpold.propertyId + " \"" + property.getPropertyId() + "\";\n" +
                         VocabularyEcoSpold.propertyAmount + " " + property.getAmount() + ";\n" +
-                        VocabularyEcoSpold.propertyIsDefiningValue + " " + property.getIsDefiningValue() + ";\n" +
+                        VocabularyEcoSpold.propertyIsDefiningValue + " \"" + property.getIsDefiningValue() + "\";\n" +
                         VocabularyEcoSpold.propertyUnitId + " \"" + property.getUnitId() + "\";\n" +
                         VocabularyEcoSpold.propertyName + " \"" + property.getName() + "\";\n" +
                         VocabularyEcoSpold.propertyUnitName + " \"" + property.getUnitName() + "\";\n" +

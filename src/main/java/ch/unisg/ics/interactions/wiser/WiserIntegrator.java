@@ -1,19 +1,10 @@
 package ch.unisg.ics.interactions.wiser;
 
-import ch.unisg.ics.interactions.wiser.data.ecoSpold.Activity;
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.EcoSpold;
-import ch.unisg.ics.interactions.wiser.data.ecoSpold.FileAttributes;
 import ch.unisg.ics.interactions.wiser.data.ilcd.ProcessDataSet;
-import ch.unisg.ics.interactions.wiser.data.ilcd.ReferenceToDataSource;
 import ch.unisg.ics.interactions.wiser.filter.XMLReaderWithoutNamespace;
 import ch.unisg.ics.interactions.wiser.integrator.InsertEcoSpoldData;
-import ch.unisg.ics.interactions.wiser.queries.ecoSpold.*;
-import ch.unisg.ics.interactions.wiser.queries.ilcd.*;
-import ch.unisg.ics.interactions.wiser.queries.ilcd.DataEntryByQueryBuilder;
-import ch.unisg.ics.interactions.wiser.queries.ilcd.GeographyQueryBuilder;
-import ch.unisg.ics.interactions.wiser.queries.ilcd.ReviewQueryBuilder;
-import ch.unisg.ics.interactions.wiser.queries.ilcd.TechnologyQueryBuilder;
-import ch.unisg.ics.interactions.wiser.tools.GraphDBInterface;
+import ch.unisg.ics.interactions.wiser.integrator.InsertILCDData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,19 +34,7 @@ public class WiserIntegrator {
         ProcessDataSet ilcd = integrator.unmarshalILCD(ILCDTestFileName);
 
         InsertEcoSpoldData insertEcoSpoldData = new InsertEcoSpoldData(ecoSpold);
-
-        //String activity = new IntermediateExchangeQueryBuilder(ecoSpold.getActivityDataset().getFlowData().getIntermediateExchange().get(0), "100").createIntermediateExchangeInsertionQuery();
-
-        //System.out.println(activity);
-
-        //Link EcoSpold
-        //Link ILCD
-
-        try {
-            //graphDBInterface.queryEndpoint(query);
-        } catch (Exception e) {
-            //e.printStackTrace();
-        }
+        //InsertILCDData insertILCDData = new InsertILCDData(ilcd);
 
     }
 

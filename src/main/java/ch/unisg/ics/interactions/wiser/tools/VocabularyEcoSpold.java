@@ -90,7 +90,6 @@ public class VocabularyEcoSpold{
     public static String exchangeOutputGroup = "ecoflow:outputGroup";
     public static String exchangeProperty = "ecoflow:property";
 
-
     //IntermediateExchange ProductionUncertainty
     public static String uncertainty = "ecotype:uncertainty";
     public static String meanValue = "ecotype:meanValue";
@@ -176,7 +175,6 @@ public class VocabularyEcoSpold{
     public static String dataEntryByIndividual = "ecobase:dataEntryBy";
     public static String dataGeneratorAndPublicationIndividual = "ecoact:dataGeneratorAndPublication";
     public static String fileAttributesIndividual = "ecoact:fileAttributes";
-    public static String ecoactivityIndividual = "ecoact:representativeness";
     public static String reviewIndividual = "ecoact:review";
     public static String customExchangeIndividual = "ecobase:customExchange";
 

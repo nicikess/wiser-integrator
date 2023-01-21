@@ -8,10 +8,12 @@ public class QuantitativeReferenceQueryBuilder {
 
     private QuantitativeReference quantitativeReference;
     private String activityIdIlcd;
+    private String identifier;
 
     public QuantitativeReferenceQueryBuilder(QuantitativeReference quantitativeReference, String activityIdIlcd) {
         this.quantitativeReference = quantitativeReference;
         this.activityIdIlcd = activityIdIlcd;
+        this.identifier = VocabularyILCD.quantitativeReferenceIRI + activityIdIlcd;
     }
 
     public String createQuantitativeReferenceInsertionQuery() {
@@ -26,11 +28,15 @@ public class QuantitativeReferenceQueryBuilder {
                         VocabularyILCD.quantitativeReferenceType + " \"" + quantitativeReference.getType() + "\";\n" +
                         VocabularyILCD.referenceToReferenceFlow + " " + quantitativeReference.getReferenceToReferenceFlow() + ";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.quantitativeReferenceIRI + activityIdIlcd + "') AS ?quantitativeReference)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?quantitativeReference)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 }

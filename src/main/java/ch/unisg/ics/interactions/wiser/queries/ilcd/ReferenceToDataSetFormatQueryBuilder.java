@@ -7,10 +7,12 @@ public class ReferenceToDataSetFormatQueryBuilder {
 
     private ReferenceToDataSetFormat referenceToDataSetFormat;
     private String activityIdILCD;
+    private String identifier;
 
     public ReferenceToDataSetFormatQueryBuilder(ReferenceToDataSetFormat referenceToDataSetFormat, String activityIdILCD) {
         this.referenceToDataSetFormat = referenceToDataSetFormat;
         this.activityIdILCD = activityIdILCD;
+        this.identifier = VocabularyILCD.referenceToDataSetFormatIRI + activityIdILCD;
     }
 
     public String createReferenceToDataSetFormatInsertionQuery() {
@@ -21,16 +23,21 @@ public class ReferenceToDataSetFormatQueryBuilder {
                         "" + "\n" +
                         "insert {" + "\n" +
                         "?referenceToDataSetFormat a " + VocabularyILCD.reference + ";\n" +
+                        VocabularyILCD.refObject + " \"" + referenceToDataSetFormat.getRefObjectId() + "\";\n" +
                         VocabularyILCD.referenceType + " \"" + referenceToDataSetFormat.getType() + "\";\n" +
                         VocabularyILCD.referenceVersion + " \"" + referenceToDataSetFormat.getVersion() + "\";\n" +
                         VocabularyILCD.referenceURI + " \"" + referenceToDataSetFormat.getUri() + "\";\n" +
                         VocabularyILCD.referenceShortDescription + " \"" + referenceToDataSetFormat.getShortDescription() + "\";\n" +
                         "} where {" + "\n" +
-                        "BIND(IRI(" + VocabularyILCD.referenceToDataSetFormatIRI + activityIdILCD + "') AS ?referenceToDataSetFormat)" + "\n" +
+                        "BIND(IRI('" + identifier + "') AS ?referenceToDataSetFormat)" + "\n" +
                         "}";
 
         return query;
 
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
 }

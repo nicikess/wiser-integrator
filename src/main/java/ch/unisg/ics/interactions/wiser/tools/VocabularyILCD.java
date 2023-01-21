@@ -16,27 +16,27 @@ public class VocabularyILCD {
     public static String geographyDescriptionOfRestrictions = "process:descriptionOfRestrictions";
 
     //IRI
-    public static String geographyIRI = "'http://lca.jrc.it/ILCD/locationOfOperationSupplyOrProductionType/";
-    public static String timeIRI = "'http://lca.jrc.it/ILCD/timeRepresentativeness/";
-    public static String technologyIRI = "'http://lca.jrc.it/ILCD/technology/";
-    public static String quantitativeReferenceIRI = "'http://lca.jrc.it/ILCD/quantitativeReference/";
-    public static String lciIRI = "'http://lca.jrc.it/ILCD/LCI_MethodAndAllocation/";
-    public static String datasetInformationIRI = "'http://lca.jrc.it/ILCD/dataSetInformation/";
-    public static String datasetCommissionerAndGoalIRI = "'http://lca.jrc.it/ILCD/commissionerAndGoal/";
-    public static String dataSourcesTreatmentAndRepresentativenessIRI = "'http://lca.jrc.it/ILCD/dataSourcesTreatmentAndRepresentativeness/";
-    public static String referenceToDataSourceIRI = "'http://lca.jrc.it/ILCD/dataSource/";
-    public static String reviewIRI = "'http://lca.jrc.it/ILCD/review/";
-    public static String referenceToNameOfReviewerAndInstitutionIRI = "'http://lca.jrc.it/ILCD/referenceToReviewerAndInstitution/";
-    public static String dataGeneratorIRI = "'http://lca.jrc.it/ILCD/dataGenerator/";
-    public static String referenceToPersonOrEntityGeneratingTheDataSetIRI = "'http://lca.jrc.it/ILCD/referenceToPersonOrEntityGeneratingTheDataSet/";
-    public static String dataEntryByIRI = "'http://lca.jrc.it/ILCD/dataEntryBy";
-    public static String referenceToDataSetFormatIRI = "'http://lca.jrc.it/ILCD/referenceToDataSetFormat/";
-    public static String referenceToPersonOrEntityEnteringTheDataIRI = "'http://lca.jrc.it/ILCD/referenceToPersonOrEntityEnteringTheData/";
-    public static String publicationAndOwnershipIRI = "'http://lca.jrc.it/ILCD/publicationAndownership/";
-    public static String referenceToOwnershipOfDataSetIRI = "'http://lca.jrc.it/ILCD/referenceToOwnershipOfDataSet/";
-    public static String referenceToUnchangedRepublicationIRI = "'http://lca.jrc.it/ILCD/referenceToUnchangedRepublication/";
-    public static String exchangeIRI = "'http://lca.jrc.it/ILCD/exchanges/";
-    public static String referenceToFlowDataSetIRI= "'http://lca.jrc.it/ILCD/referenceToFlowDataSet/";
+    public static String geographyIRI = "http://lca.jrc.it/ILCD/locationOfOperationSupplyOrProductionType/";
+    public static String timeIRI = "http://lca.jrc.it/ILCD/timeRepresentativeness/";
+    public static String technologyIRI = "http://lca.jrc.it/ILCD/technology/";
+    public static String quantitativeReferenceIRI = "http://lca.jrc.it/ILCD/quantitativeReference/";
+    public static String lciIRI = "http://lca.jrc.it/ILCD/LCI_MethodAndAllocation/";
+    public static String datasetInformationIRI = "http://lca.jrc.it/ILCD/dataSetInformation/";
+    public static String datasetCommissionerAndGoalIRI = "http://lca.jrc.it/ILCD/commissionerAndGoal/";
+    public static String dataSourcesTreatmentAndRepresentativenessIRI = "http://lca.jrc.it/ILCD/dataSourcesTreatmentAndRepresentativeness/";
+    public static String referenceToDataSourceIRI = "http://lca.jrc.it/ILCD/dataSource/";
+    public static String reviewIRI = "http://lca.jrc.it/ILCD/review/";
+    public static String referenceToNameOfReviewerAndInstitutionIRI = "http://lca.jrc.it/ILCD/referenceToReviewerAndInstitution/";
+    public static String dataGeneratorIRI = "http://lca.jrc.it/ILCD/dataGenerator/";
+    public static String referenceToPersonOrEntityGeneratingTheDataSetIRI = "http://lca.jrc.it/ILCD/referenceToPersonOrEntityGeneratingTheDataSet/";
+    public static String dataEntryByIRI = "http://lca.jrc.it/ILCD/dataEntryBy";
+    public static String referenceToDataSetFormatIRI = "http://lca.jrc.it/ILCD/referenceToDataSetFormat/";
+    public static String referenceToPersonOrEntityEnteringTheDataIRI = "http://lca.jrc.it/ILCD/referenceToPersonOrEntityEnteringTheData/";
+    public static String publicationAndOwnershipIRI = "http://lca.jrc.it/ILCD/publicationAndownership/";
+    public static String referenceToOwnershipOfDataSetIRI = "http://lca.jrc.it/ILCD/referenceToOwnershipOfDataSet/";
+    public static String referenceToUnchangedRepublicationIRI = "http://lca.jrc.it/ILCD/referenceToUnchangedRepublication/";
+    public static String exchangeIRI = "http://lca.jrc.it/ILCD/exchanges/";
+    public static String referenceToFlowDataSetIRI= "http://lca.jrc.it/ILCD/referenceToFlowDataSet/";
 
     //Time
     public static String time = "process:TimeRepresentativenessType";
@@ -84,6 +84,7 @@ public class VocabularyILCD {
 
     //Reference
     public static String reference = "commonGroups:GlobalReferenceType";
+    public static String refObject = "commonGroups:refObjectId";
     public static String referenceType = "commonGroups:type";
     public static String referenceVersion = "dataTypes:version";
     public static String referenceURI = "commonGroups:uri";
@@ -130,5 +131,33 @@ public class VocabularyILCD {
     public static String classId = "commonGroups:classId";
     public static String classNameData = "commonGroups:nameData";
     public static String classFormat = "bridge:bEcoSpoldILC";
+
+    //Connect individuals
+    public static String quantitativeInformationIndividual = "commonGroups:quantitativeInformation";
+    public static String timeIndividual = "process:time";
+    public static String locationOfOperationSupplyOrProductionIndividual = "process:locationOfOperationSupplyOrProduction";
+    public static String technologyIndividual = "process:technology";
+    public static String lciMethodAndAllocationIndividual = "process:lciMethodAndAllocation";
+    public static String dataSourcesTreatmentAndRepresentativenessIndividual = "process:dataSourcesTreatmentAndRepresentativeness";
+    public static String validationIndividual = "commonGroups:validation";
+    public static String commissionerAndGoalIndividual = "commonGroups:commissionerAndGoal";
+    public static String dataGeneratorIndividual = "process:dataGenerator";
+    public static String dataEntryByIndividual = "process:dataEntryBy";
+    public static String publicationAndOwnershipTypeIndividual = "process:publicationAndOwnershipType";
+    public static String exchangesIndividual = "process:exchanges";
+    public static String classIndividual = "commonGroups:class";
+
+    //Other references to connect
+    public static String referenceToDataSourceIndividual = "commonGroups:referenceToDataSource";
+    public static String referenceToNameOfReviewerAndInstitutionIndividual = "commonGroups:referenceToNameOfReviewerAndInstitution";
+    public static String referenceToPersonOrEntityGeneratingTheDataSetIndividual = "commonGroups:referenceToPersonOrEntityGeneratingTheDataSet";
+    public static String referenceToPersonOrEntityEnteringTheDataIndividual = "commonGroups:referenceToPersonOrEntityEnteringTheData";
+    public static String referenceToDataSetFormatIndividual = "commonGroups:referenceToDataSetFormat";
+    public static String referenceToOwnershipOfDataSetIndividual = "commonGroups:referenceToOwnershipOfDataSet";
+    public static String referenceToUnchangedRepublicationIndividual = "commonGroups:referenceToUnchangedRepublication";
+    public static String referenceToFlowDataSetIndividual = "process:referenceToFlowDataSet";
+
+
+
 
 }
