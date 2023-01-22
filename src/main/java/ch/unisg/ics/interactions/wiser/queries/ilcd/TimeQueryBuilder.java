@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class TimeQueryBuilder {
 
     private Time time;
-    private String activityIdIlcd;
     private String identifier;
 
     public TimeQueryBuilder(Time time, String activityIdIlcd) {
         this.time = time;
-        this.activityIdIlcd = activityIdIlcd;
         this.identifier = VocabularyILCD.timeIRI + activityIdIlcd;
     }
 

@@ -7,12 +7,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class QuantitativeReferenceQueryBuilder {
 
     private QuantitativeReference quantitativeReference;
-    private String activityIdIlcd;
     private String identifier;
 
     public QuantitativeReferenceQueryBuilder(QuantitativeReference quantitativeReference, String activityIdIlcd) {
         this.quantitativeReference = quantitativeReference;
-        this.activityIdIlcd = activityIdIlcd;
         this.identifier = VocabularyILCD.quantitativeReferenceIRI + activityIdIlcd;
     }
 

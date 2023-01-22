@@ -5,8 +5,8 @@ import ch.unisg.ics.interactions.wiser.data.ilcd.ProcessDataSet;
 import ch.unisg.ics.interactions.wiser.filter.XMLReaderWithoutNamespace;
 import ch.unisg.ics.interactions.wiser.integrator.InsertEcoSpoldData;
 import ch.unisg.ics.interactions.wiser.integrator.InsertILCDData;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import ch.unisg.ics.interactions.wiser.queries.ConnectIndividualsQuery;
+import ch.unisg.ics.interactions.wiser.tools.GraphDBInterface;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -21,24 +21,22 @@ import java.net.URL;
 
 public class WiserIntegrator {
 
-    Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
-
     public static void main(String [] args) {
 
-        String ILCDTestFileName = "ilcd-test.xml";
-        String EcoSpoldTestFileName = "ecospold-test.xml";
+        String ILCDTestFileName = "ilcd-file.xml";
+        String EcoSpoldTestFileName = "ecospold-file.xml";
 
         WiserIntegrator integrator = new WiserIntegrator();
 
         EcoSpold ecoSpold = integrator.unmarshalEcoSpold(EcoSpoldTestFileName);
         ProcessDataSet ilcd = integrator.unmarshalILCD(ILCDTestFileName);
 
-        InsertEcoSpoldData insertEcoSpoldData = new InsertEcoSpoldData(ecoSpold);
-        //InsertILCDData insertILCDData = new InsertILCDData(ilcd);
+        new InsertEcoSpoldData(ecoSpold);
+        new InsertILCDData(ilcd);
 
     }
 
-    private ProcessDataSet unmarshalILCD(String fileName) {
+    public ProcessDataSet unmarshalILCD(String fileName) {
 
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource(fileName);
@@ -77,7 +75,7 @@ public class WiserIntegrator {
 
     }
 
-    private EcoSpold unmarshalEcoSpold(String fileName) {
+    public EcoSpold unmarshalEcoSpold(String fileName) {
 
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource(fileName);
@@ -115,6 +113,22 @@ public class WiserIntegrator {
 
         return ecoSpold;
 
+    }
+
+    public static void insertDataToGraphDB(String query) {
+
+        GraphDBInterface graphDBInterface = new GraphDBInterface();
+        try {
+            graphDBInterface.queryEndpoint(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void connectIndividuals(String identifierOne, String objectProperty, String identifierTwo) {
+        String statement = new ConnectIndividualsQuery(identifierOne, objectProperty, identifierTwo).getConnectorStatement();
+        insertDataToGraphDB(statement);
     }
 
 }

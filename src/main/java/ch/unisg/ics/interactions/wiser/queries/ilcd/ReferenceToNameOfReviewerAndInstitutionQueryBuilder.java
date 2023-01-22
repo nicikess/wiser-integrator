@@ -7,12 +7,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class ReferenceToNameOfReviewerAndInstitutionQueryBuilder {
 
     private ReferenceToNameOfReviewerAndInstitution referenceToNameOfReviewerAndInstitution;
-    private String activityIdILCD;
     private String identifier;
 
     public ReferenceToNameOfReviewerAndInstitutionQueryBuilder(ReferenceToNameOfReviewerAndInstitution referenceToNameOfReviewerAndInstitution, String activityIdILCD) {
         this.referenceToNameOfReviewerAndInstitution = referenceToNameOfReviewerAndInstitution;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.referenceToNameOfReviewerAndInstitutionIRI + activityIdILCD;
     }
 

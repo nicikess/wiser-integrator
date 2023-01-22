@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
 public class FileAttributesQueryBuilder {
 
     private FileAttributes fileAttributes;
-    private String activityIdEcoSpold;
     private String identifier;
 
     public FileAttributesQueryBuilder(FileAttributes fileAttributes, String activityIdEcoSpold) {
         this.fileAttributes = fileAttributes;
-        this.activityIdEcoSpold = activityIdEcoSpold;
         this.identifier = VocabularyEcoSpold.fileAttributesIRI + activityIdEcoSpold;
     }
 

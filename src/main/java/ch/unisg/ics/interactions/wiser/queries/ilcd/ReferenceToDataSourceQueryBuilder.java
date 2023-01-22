@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class ReferenceToDataSourceQueryBuilder {
 
     private ReferenceToDataSource referenceToDataSource;
-    private String activityIdILCD;
     private String identifier;
 
     public ReferenceToDataSourceQueryBuilder(ReferenceToDataSource referenceToDataSource, String activityIdILCD) {
         this.referenceToDataSource = referenceToDataSource;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.referenceToDataSourceIRI + activityIdILCD + "/" + referenceToDataSource.getRefObjectId();
     }
 

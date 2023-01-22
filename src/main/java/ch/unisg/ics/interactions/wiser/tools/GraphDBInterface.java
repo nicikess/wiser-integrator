@@ -23,7 +23,6 @@ public class GraphDBInterface {
 
     public void queryEndpoint(String szQuery) throws Exception {
 
-
         SPARQLRepository sparqlRepository = new SPARQLRepository(szEndpoint, szEndpoint);
 
         sparqlRepository.setUsernameAndPassword("nKesseli", "6V!s4NaV7");
@@ -44,26 +43,6 @@ public class GraphDBInterface {
         } catch (Exception e) {
             repositoryConnection.rollback();
         }
-
-    }
-
-    public HttpClient authHttpClient(String user, String password) {
-        CredentialsProvider credsProvider = new BasicCredentialsProvider();
-        Credentials credentials = new UsernamePasswordCredentials(user, password);
-        credsProvider.setCredentials(AuthScope.ANY, credentials);
-        HttpClient httpClient = HttpClients.custom()
-                .setDefaultCredentialsProvider(credsProvider)
-                .build();
-        return httpClient;
-    }
-
-    public String getQuery() {
-
-        String szQuery = "select * where { \n" +
-                "\t?s ?p ?o .\n" +
-                "} limit 5";
-
-        return szQuery;
 
     }
 

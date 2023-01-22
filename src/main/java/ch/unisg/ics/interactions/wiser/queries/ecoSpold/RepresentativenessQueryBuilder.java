@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
 public class RepresentativenessQueryBuilder {
 
     private Representativeness representativeness;
-    private String activityIdEcoSpold;
     private String identifier;
 
     public RepresentativenessQueryBuilder(Representativeness representativeness, String activityIdEcoSpold) {
         this.representativeness = representativeness;
-        this.activityIdEcoSpold = activityIdEcoSpold;
         this.identifier = VocabularyEcoSpold.representativenessIRI + activityIdEcoSpold;
     }
 

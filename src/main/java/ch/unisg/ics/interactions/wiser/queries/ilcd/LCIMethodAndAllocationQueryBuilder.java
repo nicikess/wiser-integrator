@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class LCIMethodAndAllocationQueryBuilder {
 
     private LCIMethodAndAllocation LCIMethodAndAllocation;
-    private String activityIdILCD;
     private String identifier;
 
     public LCIMethodAndAllocationQueryBuilder(LCIMethodAndAllocation LCIMethodAndAllocation, String activityIdILCD) {
         this.LCIMethodAndAllocation = LCIMethodAndAllocation;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.lciIRI + activityIdILCD;
     }
 

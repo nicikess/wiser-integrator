@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class GeographyQueryBuilder {
 
     private Geography geography;
-    private String activityIdILCD;
     private String identifier;
 
     public GeographyQueryBuilder(Geography geography, String activityIdILCD) {
         this.geography = geography;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.geographyIRI + activityIdILCD;
     }
 

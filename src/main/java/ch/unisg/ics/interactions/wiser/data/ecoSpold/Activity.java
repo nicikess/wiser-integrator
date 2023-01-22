@@ -5,29 +5,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
-// order of the fields in XML
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Activity {
 
     @XmlAttribute
     int specialActivityType;
+
     @XmlAttribute
     String id;
+
     @XmlAttribute
     String activityNameId;
+
     @XmlAttribute
     int inheritanceDepth;
+
     @XmlAttribute
     int type;
+
     @XmlAttribute
     int energyValues;
 
     @XmlElement()
     String activityName;
+
     private List<String> synonym = new ArrayList<String>();
+
     String includedActivitiesStart;
+
     String includedActivitiesEnd;
+
     private List<GeneralComment> generalComment = new ArrayList<GeneralComment>();
 
     public List<String> getSynonyms() {

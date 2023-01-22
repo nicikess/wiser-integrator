@@ -1,11 +1,9 @@
 package ch.unisg.ics.interactions.wiser.integrator;
 
+import ch.unisg.ics.interactions.wiser.WiserIntegrator;
 import ch.unisg.ics.interactions.wiser.data.ecoSpold.*;
-import ch.unisg.ics.interactions.wiser.queries.ConnectIndividualsQuery;
 import ch.unisg.ics.interactions.wiser.queries.ecoSpold.*;
-import ch.unisg.ics.interactions.wiser.tools.GraphDBInterface;
 import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
-import org.apache.jena.base.Sys;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +14,7 @@ public class InsertEcoSpoldData {
     private static EcoSpold ecoSpold;
     private static String activityIdEcoSpold;
     private static String activityIdentifier;
+    private WiserIntegrator integrator;
 
     Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
@@ -24,6 +23,7 @@ public class InsertEcoSpoldData {
 
         this.ecoSpold = ecoSpold;
         this.activityIdEcoSpold = ecoSpold.getActivityDataset().getActivityDescription().getActivity().getId();
+        this.integrator = new WiserIntegrator();
 
         insertEcoSpoldDataToGraphDB();
 
@@ -32,121 +32,119 @@ public class InsertEcoSpoldData {
     public void insertEcoSpoldDataToGraphDB() {
 
         //ActivityDescription
-        LOGGER.info("Insert EcoSpold activity data");
         insertActivity();
-        LOGGER.info("Insert EcoSpold classification data");
         insertClassification();
-        LOGGER.info("Insert EcoSpold geography data");
         insertGeography();
-        LOGGER.info("Insert EcoSpold technology data");
         insertTechnology();
-        LOGGER.info("Insert EcoSpold time period data");
         insertTimePeriod();
-        LOGGER.info("Insert EcoSpold macroeconomic scenario data");
         insertMacroEconomicScenario();
 
         //FlowData
-        LOGGER.info("Insert EcoSpold exchange data");
         insertIntermediateExchange();
 
         //ModellingAndValidation
-        LOGGER.info("Insert EcoSpold representativeness data");
         insertRepresentativeness();
-        LOGGER.info("Insert EcoSpold review data");
         insertReview();
 
         //AdministrativeInformation
-        LOGGER.info("Insert EcoSpold data entry by data");
         insertDataEntryBy();
-        LOGGER.info("Insert EcoSpold data generator and publication data");
         insertDataGeneratorAndPublication();
-        LOGGER.info("Insert EcoSpold file attributes data");
         insertFileAttributes();
-
-    }
-
-    public void insertDataEcoSpoldToGraphDB(String query) {
-
-        GraphDBInterface graphDBInterface = new GraphDBInterface();
-        try {
-            graphDBInterface.queryEndpoint(query);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    private void connectIndividuals(String identifierOne, String objectProperty, String identifierTwo) {
-
-        String statement = new ConnectIndividualsQuery(identifierOne, objectProperty, identifierTwo).getConnectorStatement();
-        insertDataEcoSpoldToGraphDB(statement);
 
     }
 
     private void insertActivity() {
 
+        LOGGER.info("Start " + getClass().getName() + " " + "insertActivity");
+
         Activity activityData = ecoSpold.getActivityDataset().getActivityDescription().getActivity();
         ActivityQueryBuilder activityQueryBuilder = new ActivityQueryBuilder(activityData);
         String insertQueryActivity = activityQueryBuilder.createActivityInsertionQuery();
         activityIdentifier = activityQueryBuilder.getIdentifier();
-        insertDataEcoSpoldToGraphDB(insertQueryActivity);
+        integrator.insertDataToGraphDB(insertQueryActivity);
+
+        LOGGER.info("End " + getClass().getName() + " " + "insertActivity");
 
     }
 
     private void insertClassification() {
 
+        LOGGER.info("Start " + getClass().getName() + " " + "insertClassification");
+
         List<Classification> classificationData = ecoSpold.getActivityDataset().getActivityDescription().getClassification();
         for (Classification classification: classificationData) {
             ClassificationQueryBuilder classificationQueryBuilder = new ClassificationQueryBuilder(classification, activityIdEcoSpold);
             String insertQueryClassification = classificationQueryBuilder.createClassificationInsertionQuery();
-            insertDataEcoSpoldToGraphDB(insertQueryClassification);
-            connectIndividuals(activityIdentifier, VocabularyEcoSpold.classificationIndividual, classificationQueryBuilder.getIdentifier());
+            integrator.insertDataToGraphDB(insertQueryClassification);
+            integrator.connectIndividuals(activityIdentifier, VocabularyEcoSpold.classificationIndividual, classificationQueryBuilder.getIdentifier());
         }
+
+        LOGGER.info("End " + getClass().getName() + " " + "insertClassification");
 
     }
 
     private void insertGeography() {
 
+        LOGGER.info("Start " + getClass().getName() + " " + "insertGeography");
+
+
         Geography geographyData = ecoSpold.getActivityDataset().getActivityDescription().getGeography();
         GeographyQueryBuilder geographyQueryBuilder = new GeographyQueryBuilder(geographyData,activityIdEcoSpold);
         String insertQueryGeography = geographyQueryBuilder.createGeographyInsertionQuery();
-        insertDataEcoSpoldToGraphDB(insertQueryGeography);
-        connectIndividuals(activityIdentifier, VocabularyEcoSpold.geographyIndividual, geographyQueryBuilder.getIdentifier());
+        integrator.insertDataToGraphDB(insertQueryGeography);
+        integrator.connectIndividuals(activityIdentifier, VocabularyEcoSpold.geographyIndividual, geographyQueryBuilder.getIdentifier());
+
+        LOGGER.info("End " + getClass().getName() + " " + "insertGeography");
 
     }
 
     private void insertTechnology() {
 
+        LOGGER.info("Start " + getClass().getName() + " " + "insertTechnology");
+
         Technology technology = ecoSpold.getActivityDataset().getActivityDescription().getTechnology();
         TechnologyQueryBuilder technologyQueryBuilder = new TechnologyQueryBuilder(technology,activityIdEcoSpold);
         String insertQueryTechnology = technologyQueryBuilder.createTechnologyInsertionQuery();
-        insertDataEcoSpoldToGraphDB(insertQueryTechnology);
-        connectIndividuals(activityIdentifier, VocabularyEcoSpold.technologyIndividual, technologyQueryBuilder.getIdentifier());
+        integrator.insertDataToGraphDB(insertQueryTechnology);
+        integrator.connectIndividuals(activityIdentifier, VocabularyEcoSpold.technologyIndividual, technologyQueryBuilder.getIdentifier());
+
+        LOGGER.info("End " + getClass().getName() + " " + "insertTechnology");
 
     }
 
     private void insertTimePeriod() {
 
+        LOGGER.info("Start " + getClass().getName() + " " + "insertTimePeriod");
+
         TimePeriod timePeriod = ecoSpold.getActivityDataset().getActivityDescription().getTimePeriod();
         TimePeriodQueryBuilder timePeriodQueryBuilder = new TimePeriodQueryBuilder(timePeriod,activityIdEcoSpold);
         String insertQueryTimePeriod = timePeriodQueryBuilder.createTimePeriodInsertionQuery();
         String timePeriodIdentifier = timePeriodQueryBuilder.getIdentifier();
-        insertDataEcoSpoldToGraphDB(insertQueryTimePeriod);
-        connectIndividuals(activityIdentifier, VocabularyEcoSpold.timePeriodIndividual, timePeriodIdentifier);
+        integrator.insertDataToGraphDB(insertQueryTimePeriod);
+        integrator.connectIndividuals(activityIdentifier, VocabularyEcoSpold.timePeriodIndividual, timePeriodIdentifier);
+
+        LOGGER.info("End " + getClass().getName() + " " + "insertTimePeriod");
 
     }
 
     private void insertMacroEconomicScenario() {
 
+        LOGGER.info("Start " + getClass().getName() + " " + "insertMacroEconomicScenario");
+
         MacroEconomicScenario macroEconomicScenario = ecoSpold.getActivityDataset().getActivityDescription().getMacroEconomicScenario();
         MacroEconomicScenarioQueryBuilder macroEconomicScenarioQueryBuilder = new MacroEconomicScenarioQueryBuilder(macroEconomicScenario,activityIdEcoSpold);
         String insertMacroEconomicScenario = macroEconomicScenarioQueryBuilder.createMacroEconomicScenarioInsertionQuery();
-        insertDataEcoSpoldToGraphDB(insertMacroEconomicScenario);
-        connectIndividuals(activityIdentifier, VocabularyEcoSpold.macroEconomicScenarioIndividual, macroEconomicScenarioQueryBuilder.getIdentifier());
+        integrator.insertDataToGraphDB(insertMacroEconomicScenario);
+        integrator.connectIndividuals(activityIdentifier, VocabularyEcoSpold.macroEconomicScenarioIndividual, macroEconomicScenarioQueryBuilder.getIdentifier());
+
+        LOGGER.info("End " + getClass().getName() + " " + "insertMacroEconomicScenario");
 
     }
 
     private void insertIntermediateExchange() {
+
+        LOGGER.info("Start " + getClass().getName() + " " + "insertIntermediateExchange");
+
 
         List<IntermediateExchange> intermediateExchanges = ecoSpold.getActivityDataset().getFlowData().getIntermediateExchange();
 
@@ -160,7 +158,7 @@ public class InsertEcoSpoldData {
                 PropertyQueryBuilder propertyQueryBuilder = new PropertyQueryBuilder(property, activityIdEcoSpold, intermediateExchange.getId());
                 String insertProperty = propertyQueryBuilder.createPropertyInsertionQuery();
                 propertyIdentifier.add(propertyQueryBuilder.getIdentifier());
-                insertDataEcoSpoldToGraphDB(insertProperty);
+                integrator.insertDataToGraphDB(insertProperty);
             }
 
             //Add classification
@@ -168,79 +166,102 @@ public class InsertEcoSpoldData {
                 ClassificationQueryBuilder classificationQueryBuilder = new ClassificationQueryBuilder(classification, activityIdEcoSpold);
                 String insertClassification = classificationQueryBuilder.createClassificationInsertionQuery();
                 classificationIdentifier.add(classificationQueryBuilder.getIdentifier());
-                insertDataEcoSpoldToGraphDB(insertClassification);
+                integrator.insertDataToGraphDB(insertClassification);
             }
 
             IntermediateExchangeQueryBuilder intermediateExchangeQueryBuilder = new IntermediateExchangeQueryBuilder(intermediateExchange,activityIdEcoSpold);
             String insertIntermediateExchange = intermediateExchangeQueryBuilder.createIntermediateExchangeInsertionQuery();
-            insertDataEcoSpoldToGraphDB(insertIntermediateExchange);
+            integrator.insertDataToGraphDB(insertIntermediateExchange);
 
             //Connect properties
             for(String property: propertyIdentifier) {
-                connectIndividuals(intermediateExchangeQueryBuilder.getIdentifier(), VocabularyEcoSpold.propertyExchangeIndividual, property);
+                integrator.connectIndividuals(intermediateExchangeQueryBuilder.getIdentifier(), VocabularyEcoSpold.propertyExchangeIndividual, property);
             }
 
             //Connect classification
             for(String property: propertyIdentifier) {
-                connectIndividuals(intermediateExchangeQueryBuilder.getIdentifier(), VocabularyEcoSpold.classificationExchangeIndividual, property);
+                integrator.connectIndividuals(intermediateExchangeQueryBuilder.getIdentifier(), VocabularyEcoSpold.classificationExchangeIndividual, property);
             }
 
             //Connect to activity
-            connectIndividuals(activityIdentifier, VocabularyEcoSpold.customExchangeIndividual, intermediateExchangeQueryBuilder.getIdentifier());
+            integrator.connectIndividuals(activityIdentifier, VocabularyEcoSpold.customExchangeIndividual, intermediateExchangeQueryBuilder.getIdentifier());
 
         }
+
+        LOGGER.info("End " + getClass().getName() + " " + "insertIntermediateExchange");
 
     }
 
     private void insertRepresentativeness() {
 
+        LOGGER.info("Start " + getClass().getName() + " " + "insertRepresentativeness");
+
+
         Representativeness representativeness = ecoSpold.getActivityDataset().getModellingAndValidation().getRepresentativeness();
         RepresentativenessQueryBuilder representativenessQueryBuilder = new RepresentativenessQueryBuilder(representativeness, activityIdEcoSpold);
         String intersertRepresentativeness = representativenessQueryBuilder.createRepresentativenessInsertionQuery();
-        insertDataEcoSpoldToGraphDB(intersertRepresentativeness);
-        connectIndividuals(activityIdentifier, VocabularyEcoSpold.representativenessIndividual, representativenessQueryBuilder.getIdentifier());
+        integrator.insertDataToGraphDB(intersertRepresentativeness);
+        integrator.connectIndividuals(activityIdentifier, VocabularyEcoSpold.representativenessIndividual, representativenessQueryBuilder.getIdentifier());
+
+        LOGGER.info("End " + getClass().getName() + " " + "insertRepresentativeness");
 
     }
 
     private void insertReview() {
 
+        LOGGER.info("Start " + getClass().getName() + " " + "insertReview");
+
         List<Review> reviewData = ecoSpold.getActivityDataset().getModellingAndValidation().getReviews();
         for (Review review: reviewData) {
             ReviewQueryBuilder reviewQueryBuilder = new ReviewQueryBuilder(review, activityIdEcoSpold);
             String insertQueryReview = reviewQueryBuilder.createReviewInsertionQuery();
-            insertDataEcoSpoldToGraphDB(insertQueryReview);
-            connectIndividuals(activityIdentifier, VocabularyEcoSpold.reviewIndividual, reviewQueryBuilder.getIdentifier());
+            integrator.insertDataToGraphDB(insertQueryReview);
+            integrator.connectIndividuals(activityIdentifier, VocabularyEcoSpold.reviewIndividual, reviewQueryBuilder.getIdentifier());
         }
+
+        LOGGER.info("End " + getClass().getName() + " " + "insertReview");
 
     }
 
     private void insertDataEntryBy() {
 
+        LOGGER.info("Start " + getClass().getName() + " " + "insertDataEntryBy");
+
         DataEntryBy dataEntryBy = ecoSpold.getActivityDataset().getAdministrativeInformation().getDataEntryBy();
         DataEntryByQueryBuilder dataEntryByQueryBuilder = new DataEntryByQueryBuilder(dataEntryBy, activityIdEcoSpold);
         String insertDataEntryBy = dataEntryByQueryBuilder.createDataEntryByInsertionQuery();
-        insertDataEcoSpoldToGraphDB(insertDataEntryBy);
-        connectIndividuals(activityIdentifier, VocabularyEcoSpold.dataEntryByIndividual, dataEntryByQueryBuilder.getIdentifier());
+        integrator.insertDataToGraphDB(insertDataEntryBy);
+        integrator.connectIndividuals(activityIdentifier, VocabularyEcoSpold.dataEntryByIndividual, dataEntryByQueryBuilder.getIdentifier());
+
+        LOGGER.info("End " + getClass().getName() + " " + "insertDataEntryBy");
 
     }
 
     private void insertDataGeneratorAndPublication() {
 
+        LOGGER.info("Start " + getClass().getName() + " " + "insertDataGeneratorAndPublication");
+
         DataGeneratorAndPublication dataGeneratorAndPublication = ecoSpold.getActivityDataset().getAdministrativeInformation().getDataGeneratorAndPublication();
         DataGeneratorAndPublicationQueryBuilder dataGeneratorAndPublicationQueryBuilder = new DataGeneratorAndPublicationQueryBuilder(dataGeneratorAndPublication, activityIdEcoSpold);
         String insertDataGeneratorAndPublication = dataGeneratorAndPublicationQueryBuilder.createDataGeneratorAndPublicationInsertionQuery();
-        insertDataEcoSpoldToGraphDB(insertDataGeneratorAndPublication);
-        connectIndividuals(activityIdentifier, VocabularyEcoSpold.dataGeneratorAndPublicationIndividual, dataGeneratorAndPublicationQueryBuilder.getIdentifier());
+        integrator.insertDataToGraphDB(insertDataGeneratorAndPublication);
+        integrator.connectIndividuals(activityIdentifier, VocabularyEcoSpold.dataGeneratorAndPublicationIndividual, dataGeneratorAndPublicationQueryBuilder.getIdentifier());
+
+        LOGGER.info("End " + getClass().getName() + " " + "insertDataGeneratorAndPublication");
 
     }
 
     private void insertFileAttributes() {
 
+        LOGGER.info("Start " + getClass().getName() + " " + "insertFileAttributes");
+
         FileAttributes fileAttributes = ecoSpold.getActivityDataset().getAdministrativeInformation().getFileAttributes();
         FileAttributesQueryBuilder fileAttributesQueryBuilder = new FileAttributesQueryBuilder(fileAttributes, activityIdEcoSpold);
         String insertFileAttributes = fileAttributesQueryBuilder.createFileAttributesInsertionQuery();
-        insertDataEcoSpoldToGraphDB(insertFileAttributes);
-        connectIndividuals(activityIdentifier, VocabularyEcoSpold.fileAttributesIndividual, fileAttributesQueryBuilder.getIdentifier());
+        integrator.insertDataToGraphDB(insertFileAttributes);
+        integrator.connectIndividuals(activityIdentifier, VocabularyEcoSpold.fileAttributesIndividual, fileAttributesQueryBuilder.getIdentifier());
+
+        LOGGER.info("End " + getClass().getName() + " " + "insertFileAttributes");
 
     }
 

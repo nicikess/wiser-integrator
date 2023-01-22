@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class PublicationAndOwnershipQueryBuilder {
 
     private PublicationAndOwnership publicationAndOwnership;
-    private String activityIdILCD;
     private String identifier;
 
     public PublicationAndOwnershipQueryBuilder(PublicationAndOwnership publicationAndOwnership, String activityIdILCD) {
         this.publicationAndOwnership = publicationAndOwnership;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.publicationAndOwnershipIRI + activityIdILCD;
     }
 

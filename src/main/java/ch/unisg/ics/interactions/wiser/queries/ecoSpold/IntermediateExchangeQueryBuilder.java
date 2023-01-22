@@ -10,12 +10,10 @@ import java.util.List;
 public class IntermediateExchangeQueryBuilder {
 
     private IntermediateExchange intermediateExchange;
-    private String activityIdEcoSpold;
     private String identifier;
 
     public IntermediateExchangeQueryBuilder(IntermediateExchange intermediateExchange, String activityIdEcoSpold) {
         this.intermediateExchange = intermediateExchange;
-        this.activityIdEcoSpold = activityIdEcoSpold;
         this.identifier = VocabularyEcoSpold.intermediateExchangeIRI + activityIdEcoSpold;
     }
 

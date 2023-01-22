@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class DataSetInformationQueryBuilder {
 
     private DataSetInformation dataSetInformation;
-    private String activityIdILCD;
     private String identifier;
 
     public DataSetInformationQueryBuilder(DataSetInformation dataSetInformation, String activityIdILCD) {
         this.dataSetInformation = dataSetInformation;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.datasetInformationIRI + activityIdILCD;
     }
 

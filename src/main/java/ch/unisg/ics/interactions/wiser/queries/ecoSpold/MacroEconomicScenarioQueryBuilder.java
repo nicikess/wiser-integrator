@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
 public class MacroEconomicScenarioQueryBuilder {
 
     private MacroEconomicScenario macroEconomicScenario;
-    private String activityIdEcoSpold;
     private String identifier;
 
     public MacroEconomicScenarioQueryBuilder(MacroEconomicScenario macroEconomicScenario, String activityIdEcoSpold) {
         this.macroEconomicScenario = macroEconomicScenario;
-        this.activityIdEcoSpold = activityIdEcoSpold;
         this.identifier = VocabularyEcoSpold.macroEconomicScenarioIRI + activityIdEcoSpold;
     }
 

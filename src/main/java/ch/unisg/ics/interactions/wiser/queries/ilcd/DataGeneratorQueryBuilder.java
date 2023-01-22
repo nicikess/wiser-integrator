@@ -7,12 +7,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class DataGeneratorQueryBuilder {
 
     private DataGenerator dataGenerator;
-    private String activityIdILCD;
     private String identifier;
 
     public DataGeneratorQueryBuilder(DataGenerator dataGenerator, String activityIdILCD) {
         this.dataGenerator = dataGenerator;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.dataGeneratorIRI + activityIdILCD;
     }
 

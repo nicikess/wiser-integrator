@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class ReferenceToFlowDataSetQueryBuilder {
 
     private ReferenceToFlowDataSet referenceToFlowDataSet;
-    private String activityIdILCD;
     private String identifier;
 
     public ReferenceToFlowDataSetQueryBuilder(ReferenceToFlowDataSet referenceToFlowDataSet, String activityIdILCD) {
         this.referenceToFlowDataSet = referenceToFlowDataSet;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.referenceToFlowDataSetIRI + activityIdILCD;
     }
 

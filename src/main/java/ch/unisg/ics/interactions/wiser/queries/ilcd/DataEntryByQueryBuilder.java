@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class DataEntryByQueryBuilder {
 
     private DataEntryBy dataEntryBy;
-    private String activityIdILCD;
     private String identifier;
 
     public DataEntryByQueryBuilder(DataEntryBy dataEntryBy, String activityIdILCD) {
         this.dataEntryBy = dataEntryBy;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.dataEntryByIRI + activityIdILCD;
     }
 

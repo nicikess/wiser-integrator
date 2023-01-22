@@ -9,6 +9,10 @@ public class XMLReaderWithoutNamespace extends StreamReaderDelegate {
         super(reader);
     }
 
+    /**
+     * Ignores namespaces to prevent unmarshalling errors
+     */
+
     @Override
     public String getAttributeNamespace(int arg0) {
         return "";

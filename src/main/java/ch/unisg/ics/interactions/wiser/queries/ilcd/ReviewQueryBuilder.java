@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class ReviewQueryBuilder {
 
     private Review review;
-    private String activityIdILCD;
     private String identifier;
 
     public ReviewQueryBuilder(Review review, String activityIdILCD) {
         this.review = review;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.reviewIRI + activityIdILCD;
     }
 

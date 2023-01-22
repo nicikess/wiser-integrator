@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
 public class DataGeneratorAndPublicationQueryBuilder {
 
     private DataGeneratorAndPublication dataGeneratorAndPublication;
-    private String activityIdEcoSpold;
     private String identifier;
 
     public DataGeneratorAndPublicationQueryBuilder(DataGeneratorAndPublication dataGeneratorAndPublication, String activityIdEcoSpold) {
         this.dataGeneratorAndPublication = dataGeneratorAndPublication;
-        this.activityIdEcoSpold = activityIdEcoSpold;
         this.identifier = VocabularyEcoSpold.dataGeneratorAndPublicationIRI + activityIdEcoSpold;
 
     }

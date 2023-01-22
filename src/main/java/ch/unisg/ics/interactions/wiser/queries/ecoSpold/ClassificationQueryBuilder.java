@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
 public class ClassificationQueryBuilder {
 
     private Classification classification;
-    private String activityIdEcoSpold;
     private String identifier;
 
     public ClassificationQueryBuilder(Classification classification, String activityIdEcoSpold) {
         this.classification = classification;
-        this.activityIdEcoSpold = activityIdEcoSpold;
         this.identifier = VocabularyEcoSpold.classificationIRI + activityIdEcoSpold + "/"+ classification.getId();
     }
 

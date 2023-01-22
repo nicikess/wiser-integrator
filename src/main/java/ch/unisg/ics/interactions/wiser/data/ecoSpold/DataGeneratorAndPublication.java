@@ -6,9 +6,9 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-// order of the fields in XML
 
 @XmlAccessorType(XmlAccessType.FIELD)
+
 public class DataGeneratorAndPublication {
 
     @XmlAttribute

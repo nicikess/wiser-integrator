@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class ReferenceToOwnershipOfDataSetQueryBuilder {
 
     private ReferenceToOwnershipOfDataSet referenceToOwnershipOfDataSet;
-    private String activityIdILCD;
     private String identifier;
 
     public ReferenceToOwnershipOfDataSetQueryBuilder(ReferenceToOwnershipOfDataSet referenceToOwnershipOfDataSet, String activityIdILCD) {
         this.referenceToOwnershipOfDataSet = referenceToOwnershipOfDataSet;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.referenceToOwnershipOfDataSetIRI + activityIdILCD;
     }
 

@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class CommissionerAndGoalQueryBuilder {
 
     private CommissionerAndGoal commissionerAndGoal;
-    private String activityIdILCD;
     private String identifier;
 
     public CommissionerAndGoalQueryBuilder(CommissionerAndGoal commissionerAndGoal, String activityIdILCD) {
         this.commissionerAndGoal = commissionerAndGoal;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.datasetCommissionerAndGoalIRI + activityIdILCD;
     }
 

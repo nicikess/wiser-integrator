@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
 public class UncertaintyQueryBuilder {
 
     private ProductionVolumeUncertainty productionVolumeUncertainty;
-    private String activityIdEcoSpold;
     private String identifier;
 
     public UncertaintyQueryBuilder(ProductionVolumeUncertainty productionVolumeUncertainty, String activityIdEcoSpold) {
         this.productionVolumeUncertainty = productionVolumeUncertainty;
-        this.activityIdEcoSpold = activityIdEcoSpold;
         this.identifier = VocabularyEcoSpold.uncertaintyIRI + activityIdEcoSpold;
     }
 

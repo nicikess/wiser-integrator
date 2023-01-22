@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
 public class ReviewQueryBuilder {
 
     private Review review;
-    private String activityIdEcoSpold;
     private String identifier;
 
     public ReviewQueryBuilder(Review review, String activityIdEcoSpold) {
         this.review = review;
-        this.activityIdEcoSpold = activityIdEcoSpold;
         this.identifier = VocabularyEcoSpold.reviewIRI + activityIdEcoSpold;
     }
 

@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
 public class GeographyQueryBuilder {
 
     private Geography geography;
-    private String activityIdEcoSpold;
     private String identifier;
 
     public GeographyQueryBuilder(Geography geography, String activityIdEcoSpold) {
         this.geography = geography;
-        this.activityIdEcoSpold = activityIdEcoSpold;
         this.identifier = VocabularyEcoSpold.geographyIRI + activityIdEcoSpold;
     }
 

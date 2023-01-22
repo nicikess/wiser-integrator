@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
-// order of the fields in XML
 
 @XmlAccessorType(XmlAccessType.FIELD)
+
 public class Technology {
 
     @XmlAttribute

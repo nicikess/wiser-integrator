@@ -1,19 +1,15 @@
 package ch.unisg.ics.interactions.wiser.queries.ilcd;
 
 import ch.unisg.ics.interactions.wiser.data.ilcd.DataSourcesTreatmentAndRepresentativeness;
-import ch.unisg.ics.interactions.wiser.data.ilcd.ReferenceToDataSource;
 import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
-import org.eclipse.rdf4j.query.algebra.Str;
 
 public class DataSourcesTreatmentAndRepresentativenessQueryBuilder {
 
     private DataSourcesTreatmentAndRepresentativeness dataSourcesTreatmentAndRepresentativeness;
-    private String activityIdILCD;
     private String identifier;
 
     public DataSourcesTreatmentAndRepresentativenessQueryBuilder(DataSourcesTreatmentAndRepresentativeness dataSourcesTreatmentAndRepresentativeness, String activityIdILCD) {
         this.dataSourcesTreatmentAndRepresentativeness = dataSourcesTreatmentAndRepresentativeness;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.dataSourcesTreatmentAndRepresentativenessIRI + activityIdILCD;
     }
 

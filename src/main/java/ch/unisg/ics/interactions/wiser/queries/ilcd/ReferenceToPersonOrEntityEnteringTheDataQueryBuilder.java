@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class ReferenceToPersonOrEntityEnteringTheDataQueryBuilder {
 
     private ReferenceToPersonOrEntityEnteringTheData referenceToPersonOrEntityEnteringTheData;
-    private String activityIdILCD;
     private String identifier;
 
     public ReferenceToPersonOrEntityEnteringTheDataQueryBuilder(ReferenceToPersonOrEntityEnteringTheData referenceToPersonOrEntityEnteringTheData, String activityIdILCD) {
         this.referenceToPersonOrEntityEnteringTheData = referenceToPersonOrEntityEnteringTheData;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.referenceToPersonOrEntityEnteringTheDataIRI + activityIdILCD;
     }
 

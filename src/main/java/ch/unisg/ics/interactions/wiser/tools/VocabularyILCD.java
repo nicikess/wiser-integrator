@@ -1,5 +1,9 @@
 package ch.unisg.ics.interactions.wiser.tools;
 
+/**
+ *Defines the prefixes for ILCD data and object properties
+ */
+
 public class VocabularyILCD {
 
     //Prefix
@@ -156,8 +160,5 @@ public class VocabularyILCD {
     public static String referenceToOwnershipOfDataSetIndividual = "commonGroups:referenceToOwnershipOfDataSet";
     public static String referenceToUnchangedRepublicationIndividual = "commonGroups:referenceToUnchangedRepublication";
     public static String referenceToFlowDataSetIndividual = "process:referenceToFlowDataSet";
-
-
-
 
 }

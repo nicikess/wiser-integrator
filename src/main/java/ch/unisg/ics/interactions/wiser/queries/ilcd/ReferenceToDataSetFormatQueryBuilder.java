@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class ReferenceToDataSetFormatQueryBuilder {
 
     private ReferenceToDataSetFormat referenceToDataSetFormat;
-    private String activityIdILCD;
     private String identifier;
 
     public ReferenceToDataSetFormatQueryBuilder(ReferenceToDataSetFormat referenceToDataSetFormat, String activityIdILCD) {
         this.referenceToDataSetFormat = referenceToDataSetFormat;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.referenceToDataSetFormatIRI + activityIdILCD;
     }
 

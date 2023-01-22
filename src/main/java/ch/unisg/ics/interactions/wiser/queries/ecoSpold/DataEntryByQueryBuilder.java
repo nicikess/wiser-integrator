@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
 public class DataEntryByQueryBuilder {
 
     private DataEntryBy dataEntryBy;
-    private String activityIdEcoSpold;
     private String identifier;
 
     public DataEntryByQueryBuilder(DataEntryBy dataEntryBy, String activityIdEcoSpold) {
         this.dataEntryBy = dataEntryBy;
-        this.activityIdEcoSpold = activityIdEcoSpold;
         this.identifier = VocabularyEcoSpold.dataEntryByIRI + activityIdEcoSpold;
     }
 

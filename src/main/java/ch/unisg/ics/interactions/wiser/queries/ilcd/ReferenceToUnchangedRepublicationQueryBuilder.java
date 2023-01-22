@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 public class ReferenceToUnchangedRepublicationQueryBuilder {
 
     private ReferenceToUnchangedRepublication referenceToUnchangedRepublication;
-    private String activityIdILCD;
     private String identifier;
 
     public ReferenceToUnchangedRepublicationQueryBuilder(ReferenceToUnchangedRepublication referenceToUnchangedRepublication, String activityIdILCD) {
         this.referenceToUnchangedRepublication = referenceToUnchangedRepublication;
-        this.activityIdILCD = activityIdILCD;
         this.identifier = VocabularyILCD.referenceToUnchangedRepublicationIRI + activityIdILCD;
     }
 

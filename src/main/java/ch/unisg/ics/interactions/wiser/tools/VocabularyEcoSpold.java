@@ -1,5 +1,9 @@
 package ch.unisg.ics.interactions.wiser.tools;
 
+/**
+ *Defines the prefixes for EcoSpold data and object properties
+ */
+
 public class VocabularyEcoSpold{
 
     //Prefix
@@ -27,7 +31,6 @@ public class VocabularyEcoSpold{
     public static String propertyIRI = "http://www.EcoInvent.org/EcoSpold02/property/";
     public static String uncertaintyIRI = "http://www.EcoInvent.org/EcoSpold02/property/";
     public static String intermediateExchangeIRI = "http://www.EcoInvent.org/EcoSpold02/intermediateExchange/";
-
 
     //Activity
     public static String activity = "ecometa:TActivity";

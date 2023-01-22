@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
 public class TimePeriodQueryBuilder {
 
     private TimePeriod timePeriod;
-    private String activityIdEcoSpold;
     private String identifier;
 
     public TimePeriodQueryBuilder(TimePeriod timePeriod, String activityIdEcoSpold) {
         this.timePeriod = timePeriod;
-        this.activityIdEcoSpold = activityIdEcoSpold;
         this.identifier = VocabularyEcoSpold.timePeriodIRI + activityIdEcoSpold;
     }
 

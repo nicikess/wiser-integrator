@@ -1,6 +1,5 @@
 package ch.unisg.ics.interactions.wiser.queries;
 
-import ch.unisg.ics.interactions.wiser.data.ecoSpold.Activity;
 import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
 import ch.unisg.ics.interactions.wiser.tools.VocabularyILCD;
 

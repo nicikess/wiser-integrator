@@ -6,12 +6,10 @@ import ch.unisg.ics.interactions.wiser.tools.VocabularyEcoSpold;
 public class TechnologyQueryBuilder {
 
     private Technology technology;
-    private String activityIdEcoSpold;
     private String identifier;
 
     public TechnologyQueryBuilder(Technology technology, String activityIdEcoSpold) {
         this.technology = technology;
-        this.activityIdEcoSpold = activityIdEcoSpold;
         this.identifier = VocabularyEcoSpold.technologyIRI + activityIdEcoSpold;
     }
 
