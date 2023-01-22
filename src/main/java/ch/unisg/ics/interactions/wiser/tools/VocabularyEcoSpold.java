@@ -3,7 +3,7 @@ package ch.unisg.ics.interactions.wiser.tools;
 public class VocabularyEcoSpold{
 
     //Prefix
-    public static String bridgingOntologyPrefix = "<http://wiser-flagship.org/>";
+    public static String bridgingOntologyPrefix = "bridge <http://wiser-flagship.org/>";
     public static String ecoSpoldBasePrefix = "ecobase: <http://www.EcoInvent.org/EcoSpold02/base#>";
     public static String ecoSpoldTypesPrefix = "ecotype: <http://www.EcoInvent.org/EcoSpold02/dataTypes#>";
     public static String ecoSpoldMetaInformationPrefix = "ecometa: <http://www.EcoInvent.org/EcoSpold02/metainformation#>";
